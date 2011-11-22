@@ -104,125 +104,67 @@
 //! The following example shows how to use the SPI APIs to configue SPI and to implement 
 //! the function of transferring and receiving. 
 //! \code
-//! #include "xhw_memmap.h"
-//! #include "Xspi.h"
-//! #include "Xhw_spi.h"
-//! #include "Xsysctl.h"
 //! #include "xhw_types.h"
-//! #include "Xgpio.h"
-//! #include "Xhw_gpio.h"
-//! #include "SPI_loop.h"
-//! #include "Xhw_sysctl.h"
-//! #include "test.h"
-//! #include "testcase.h"
+//! #include "xsysctl.h"
+//! #include "xhw_memmap.h"
+//! #include "xspi.h"
+//! #include "xhw_spi.h"
+//! #include "xgpio.h"
 //!
-//! unsigned char SendData[] = "Wonderful World";
-//! unsigned char ReceData[64];
-//! unsigned long i;
+//! unsigned char ucSendData[] = "Wonderful World!";
 //!
 //! //*****************************************************************************
 //!
-//! //Ininite the SPI case which is needed
+//! //Ininite the SPI and implement the function of data transmission.
 //!
 //! //param None
 //!
-//! //This function ininite the SPI including clock source and enable spi 
+//! //This function is to ininite the SPI and implement the function of data transmission.
 //!
 //! //return none
 //!
 //! //*****************************************************************************
-//! void SpiReceiveTransferInit(void)
+//! void SpiInitAndTransfer(void)
 //! {
-//!    SysCtlKeyAddrUnlock();
-//!    xHWREG(SYSCLK_PWRCON) |= SYSCLK_PWRCON_XTL12M_EN;
-//!    xHWREG(SYSCLK_PLLCON) &= ~SYSCLK_PLLCON_OE;
-//!    xHWREG(SYSCLK_PLLCON) &= ~SYSCLK_PLLCON_PD;
+//!
 //!    //
-//!    // Set SysClk 36MHz using Extern 12M oscillator
+//!    // Step 1, Set SysClk 50MHz using Extern 12M oscillator
 //!    //
-//!    xSysCtlClockSet(36000000, xSYSCTL_OSC_MAIN|xSYSCTL_XTAL_12MHZ);
+//!    SysCtlClockSet(50000000, SYSCTL_OSC_MAIN | SYSCTL_XTAL_12MHZ);
+//!
 //!    //
-//!    // Enable Peripheral SPI0,SPI1
+//!    // Step 2, Enable Peripheral SPI0
 //!    //
-//!    SysCtlPeripheralEnable(SYSCTL_PERIPH_SPI0);
-//!    SysCtlPeripheralEnable(SYSCTL_PERIPH_SPI1);
-//!    SPIIntEnable(SPI0_BASE, TransferOver);
+//!    SysCtlPeripheralEnable2(SPI0_BASE);
+//! 
+//!    //
+//!    // Step 3, you should configures a pin for use as a SPI function
+//!    //
+//!    GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE, GPIO_PIN_0);
+//!    GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE, GPIO_PIN_1);
+//!    GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE, GPIO_PIN_2);
+//!    GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE, GPIO_PIN_3);
+//!
+//!    //
+//!    // Step 4, you should configure MCU as a master or slave device , data width 
+//!    // MSB or LSB first and Mode
+//!    //
+//!    SPIConfigSet(SPI0_BASE, 100000, SPI_MOTO_FORMAT_MODE_1 |
+//!                                           SPI_MODE_MASTER | 
+//!                                             SPI_MSB_FIRST |
+//!                                            SPI_DATA_WIDTH8);
+//!    //
+//!    // Step 5, you should use SPI slave select pin to connect with an off-chip  
+//!    // slave device. Slave select signal is active low.
+//!    //
+//!    SPISSSet(SPI0_BASE, SPI_SS_HARDWARE, SPI_SS0); 
+//!     
+//!    //
+//!    // Step 6, you can transfer data right now.
+//!    //
+//!    SPIDataWrite(SPI0_BASE, ucSendData, 16);
 //!  }
-//! //*****************************************************************************
 //!
-//! //Spi Master Slave Mode Configure
-//!
-//! //param None
-//!
-//! //This function configure the SPI as master and slave mode at the same time
-//! //transfer and receive data
-//!
-//! //return None
-//!
-//! //*****************************************************************************
-//! void SpiMasterSlaveModeConfig(void)
-//! {
-//!    
-//!    //
-//!    // Configure Some GPIO pins as SPI Mode
-//!    //
-//!    GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE,GPIO_PIN_2);
-//!    GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE,GPIO_PIN_3);
-//!    GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE,GPIO_PIN_0);
-//!    GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE,GPIO_PIN_1);
-//!    GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE,GPIO_PIN_9);
-//!    GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE,GPIO_PIN_8);
-//!    GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE,GPIO_PIN_10);
-//!    GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE,GPIO_PIN_11);
-//!    //
-//!    // Master Mode  polarity 0,Rx latched at rising edge Tx changed at rising edge
-//!    // 2000000Hz 8Bits Data windth  SPI MSB First
-//!    //
-//! SPIConfig(SPI0_BASE,2000000,SPI_FORMAT_MODE_5|SPI_DATA_WIDTH8|SPI_MSB_FIRST|SPI_MODE_MASTER);
-//!    //
-//!    // Slave Mode  polarity 0,Rx latched at rising edge Tx changed at rising edge
-//!    // 2000000Hz 8Bits Data windth  SPI MSB First
-//!    //
-//!    xHWREG(SPI1_BASE + SPI_CNTRL) = 0x00000000;
-//!    xHWREG(SPI1_BASE + SPI_CNTRL) |= 0x00040844;
-//!    //
-//!    // Software Control Transfer Select SS0 and SS1
-//!    //
-//!    xSPISSSet(SPI0_BASE,xSPI_SS_SOFTWARE,SPI_SS0);   
-//!
-//!    //
-//!    // Level Trig Slave at High Level
-//!    //
-//!    SPISSConfig(SPI0_BASE, SPI_SS_LEVEL_TRIGGER,SPI_SS_ACTIVE_HIGH_RISING);
-//!    SPISSConfig(SPI1_BASE, SPI_SS_LEVEL_TRIGGER,SPI_SS_ACTIVE_HIGH_RISING);
-//!
-//!    for(i=0;i<1;i++)
-//!    {
-//!        SPIDataWrite(SPI0_BASE,SendData,15);
-//!        SPIDataRead(SPI1_BASE,ReceData, 16);
-//!        TestIOPut('O');
-//!        TestIOPut('K');
-//!    }
-//!    TestIOPut('\n');
-//!    for(i=0;i<18;i++)
-//!    {
-//!        TestIOPut(ReceData[i]);  
-//!    }
-//! }
-//! //******************************************************************************
-//! //
-//! // The main function of the SPI transfer  
-//! //
-//! //******************************************************************************
-//! int main(void)
-//! {
-//!    SpiReceiveTransferInit();
-//!    SpiMasterSlaveModeConfig();
-//!    while(1)
-//!    {	
-//!    }
-//!        
-//! }
 //! \endcode
 //! \note 
 //!
