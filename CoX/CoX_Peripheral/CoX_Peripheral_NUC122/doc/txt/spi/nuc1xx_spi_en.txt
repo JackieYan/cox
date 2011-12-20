@@ -1,0 +1,201 @@
+//********************************************************************************
+//
+//! \defgroup NUC122_SPI NUC122 SPI
+//!
+//! \brief NUC122 SPI Peripheral Driver
+//!
+//! The CoX Peripheral Library also provides APIs for full functions of Nuvoton
+//! NUC122 SPI.This module supports the whole NUC122 Series.
+//!
+//! <br /> 
+//! <h1>Contents</h1>
+//! - \ref NUC122_SPI_BLOCK
+//! - \ref NUC122_SPI_Function_Desc
+//! - \ref NUC122_SPI_API_Group
+//!   - \ref NUC122_API_Group_Configure_Control
+//!   - \ref NUC122_API_Group_Interrupt_Control
+//!   - \ref NUC122_API_Group_TransferReceive_Control
+//!   .
+//! - \ref NUC122_SPI_Usage
+//! .
+//!
+//! <br />
+//! \section NUC122_SPI_BLOCK 1. Spi Physical Block
+//! <img src="NUC122_spi_block.png" />
+//!
+//! <br />
+//! \section NUC122_SPI_Function_Desc 2. Functional Description
+//! The system control block has the following functions:
+//! - The SPI controller can be configured as a master or a slave device. In master 
+//!   mode the spi controller can drive up to two off-chip slave devices. It can also
+//!   be set to FIFO mode with different rate and data width and slave select mode. 
+//! - Each SPI controller can generate an individual interrupt when data transfer is finished,
+//!   and the respective interrupt event flag IF will be set. The interrupt 
+//!   event flag will generates an interrupt to CPU if the interrupt enable bit IE.
+//! - The SPI controller can be set to different transfer and receive mode,including
+//!   normal transfer and receive mode, burst transfer and receive mode, FIFO mode.
+//!   At the same time, it is a synchronous serial data communication 
+//!   protocol which operates in full duplex mode.Devices communicate in master/slave
+//!   mode with 4-wire bi-direction interface. 
+//! .
+//!
+//! <br />
+//! \subsection NUC122_SPI_API_Group 3. API Groups
+//!
+//! The Spi API is broken into three groups of functions:
+//! - those that deal with SPI mode configure,
+//! - those that deal with SPI interrupt control,
+//! - those that deal with SPI transfer and receive controlling.
+//! .
+//! <br />
+//! \subsection NUC122_API_Group_Configure_Control 3.1 SPI configuration control APIs
+//!
+//! - SPIConfig()
+//! - SPIAutoSSEnable()
+//! - SPIAutoSSDisable()
+//! - SPISSSet()
+//! - SPISSClear()
+//! - SPISSConfig()
+//! - SPILevelTriggerStatusGet()
+//! - SPIFIFOModeSet()
+//! - SPIByteReorderSet()
+//! - SPIVariableClockSet()
+//! - SPIDivOneFunction()
+//! .
+//!
+//! <br />
+//! \subsection NUC122_API_Group_Interrupt_Control 3.2 SPI Interrupt Control APIs
+//! - SPIIntFlagClear()
+//! - SPIIntFlagGet()
+//! - SPIIntDisable()
+//! - SPIIntEnable()
+//! .
+//!
+//! <br />
+//! \subsection NUC122_API_Group_TransferReceive_Control 3.3 SPI Transfer&Receive Control
+//!
+//! - SPISingleDataReadWrite()
+//! - SPIBitLengthGet()
+//! - SPIDataRead()
+//! - SPIBurstDataRead()
+//! - SPIRxRegisterGet()
+//! - SPIDataWrite()
+//! - SPIBurstDataWrite()
+//! - SPITxRegisterSet()
+//! - SPIBitGoBusySet()
+//! - SPIBitGoBusyClear()
+//! - SPIIsBusy()
+//! - SPIIsRxEmpty()
+//! - SPIIsRxFull()
+//! - SPIIsTxEmpty()
+//! - SPIIsTxFull()
+//! - SPIFIFOStatusGet()
+//! .
+//! <br />
+//! \section NUC122_SPI_Usage 4 Program Examples
+//! The following example shows how to use the SPI APIs to configue SPI and to implement 
+//! the function of transferring and receiving. 
+//! \code
+//! //*****************************************************************************
+//! //
+//! //! \file SPI_loop.c
+//! //! \brief Test SPI.
+//! //! \version 1.0
+//! //! \date 8/2/2011
+//! //! \author CooCox
+//! //! \copy
+//! //!
+//! //! Copyright (c) 2009-2011 CooCox.  All rights reserved.
+//! //
+//! //*****************************************************************************
+//! #include "xhw_types.h"
+//! #include "xhw_memmap.h"
+//! #include "xspi.h"
+//! #include "xhw_spi.h"
+//! #include "xsysctl.h"
+//! #include "xgpio.h"
+//! #include "SpiSlave.h"
+//! #include "xhw_ints.h"
+//! #include "xcore.h"
+//!
+//! unsigned long SendData[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19};
+//! unsigned long ReceData[64];
+//! unsigned long i;
+//!
+//! //*****************************************************************************
+//! //
+//! //! Ininite the SPI case which is needed
+//! //!
+//! //! \param None
+//! //!
+//! //! This function ininite the SPI including clock source and enable spi 
+//! //!
+//! //! \return none
+//! //
+//! //*****************************************************************************
+//! void SpiReceiveTransferInit(void)
+//! {
+//!     //
+//!     // Set SysClk 36MHz using Extern 12M oscillator
+//!     //
+//!     xSysCtlClockSet(36000000, xSYSCTL_OSC_MAIN|xSYSCTL_XTAL_12MHZ);
+//!     //
+//!     // Enable Peripheral SPI0
+//!     //
+//!     SysCtlPeripheralEnable(SYSCTL_PERIPH_SPI0);
+//! }
+//! //*****************************************************************************
+//! //
+//! //! Spi Master Slave Mode Configure
+//! //!
+//! //! \param None
+//! //!
+//! //! This function configure the SPI as master and slave mode at the same time
+//! //! transfer and receive data
+//! //!
+//! //! \return None
+//! //
+//! //*****************************************************************************
+//! void SpiSlaveModeConfig(void)
+//! {
+//!     
+//!     //
+//!     // Configure Some GPIO pins as SPI Mode
+//!     //
+//!     GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE,GPIO_PIN_2);
+//!     GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE,GPIO_PIN_3);
+//!     GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE,GPIO_PIN_0);
+//!     GPIOPinFunctionSet(GPIO_FUNCTION_SPI, GPIO_PORTC_BASE,GPIO_PIN_1);
+//!
+//!     xHWREG(SPI0_BASE + SPI_CNTRL) = 0x00000000;
+//!     xHWREG(SPI0_BASE + SPI_CNTRL) |= 0x00040844;
+//!     //
+//!     // Level Trig Slave at High Level
+//!     //
+//!     SPISSConfig(SPI0_BASE, SPI_SS_LEVEL_TRIGGER,SPI_SS_ACTIVE_HIGH_RISING);
+//!     for(i=0;i<22;i++)
+//!     {
+//!         SPIDataWrite(SPI0_BASE,SendData,22);
+//!         SPIDataRead(SPI0_BASE,ReceData,22);
+//!         
+//!     }
+//! }
+//!
+//! //******************************************************************************
+//! //
+//! // The main function of the SPI transfer  
+//! //
+//! //******************************************************************************
+//! int main(void)
+//! {
+//!    SpiReceiveTransferInit();
+//!    SpiMasterSlaveModeConfig();
+//!    while(1)
+//!    {	
+//!    }
+//!        
+//! }
+//! \endcode
+//! \note 
+//!
+//**********************************************************************************
