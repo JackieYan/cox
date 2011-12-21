@@ -75,7 +75,6 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup xTIMER_Mode_Type xTIMER Mode Type 
-//! \brief Values that show xTIMER Mode Type.
 //! \n
 //! \section xTIMER_Mode_Type_Section 1. Where to use this group
 //! Values that can be passed to xTimerInitConfig() as the ulConfig parameter 
@@ -131,11 +130,10 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup xTIMER_INT_Type xTIMER Interrupt
-//! \brief Values that show xTIMER Interrupt Type.
 //! \n
 //! \section xTIMER_INT_Type_Section 1. Where to use this group
 //! Values that can be passed to xTimerIntEnable(), xTimerIntDisable() ,
-//! xTimerIntStatus(),xTimerIntClear() as ulIntFlags . 
+//! xTimerStatusGet() as ulIntFlags . 
 //! \n
 //! \section xTIMER_INT_Type_CoX 2. CoX Port Details 
 //! \verbatim
@@ -171,7 +169,6 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup xTIMER_INT_Event xTIMER Interrupt Event
-//! \brief Values that show xTIMER Interrupt Events.
 //! \n
 //! \section xTIMER_INT_Event_Section 1. Where to use this group
 //! Values that can be passed to xTimerIntEnable(), xTimerIntDisable() ,
@@ -211,7 +208,6 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup xTIMER_Counter_Pase_Type xTIMER Counter Pase Type
-//! \brief Values that show xTIMER Counter Pase Type.
 //! \n
 //! \section xTIMER_Counter_Pase_Type_Section 1. Where to use this group
 //! Values that can be passed to xTimerCounterDetectPhaseSelect() as ulPhase. 
@@ -244,7 +240,6 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup xTIMER_Count_Direction xTIMER Count Direction
-//! \brief Values that show the count direction
 //! \n
 //! \section xTIMER_Count_Direction_Section 1. Where to use this group
 //! Values that can be passed to xTimerInitConfig() as ulConfig.
@@ -268,12 +263,6 @@ extern "C"
 //
 #define xTIMER_COUNT_UP         0
 
-//
-//! The timer counts down.
-//
-#define xTIMER_COUNT_DOWN       0
-
-
 //*****************************************************************************
 //
 //! @}
@@ -283,7 +272,6 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup xTIMER_Count_Channel xTIMER Count Channel
-//! \brief Timer Count Channels.
 //! \n
 //! \section xTIMER_Count_Channel_Section 1. Where to use this group
 //! Values that can be passed to all XAPI as ulChannel.
@@ -603,7 +591,7 @@ extern "C"
 //! This function is to enable The Timer counter interrupt.
 //! 
 //! The \e ulIntFlags parameter is the OR value of any of the following:
-//! \b xTIMER_INT_MATCH, \b xTIMER_INT_CAP_EVENT.
+//! \b xTIMER_INT_MATCH
 //! Details please refer to \ref xTIMER_INT_Type_CoX
 //!
 //! \return None.
@@ -649,7 +637,7 @@ extern "C"
 //! This function is to disable The Timer counter interrupt.
 //! 
 //! The \e ulIntFlags parameter can be one of the values:
-//! \b xTIMER_INT_MATCH, \b xTIMER_INT_CAP_EVENT.
+//! \b xTIMER_INT_MATCH.
 //! Details please refer to \ref xTIMER_INT_Type_CoX.
 //!
 //! \note When use this API ,the ulIntFlags parameter one of the interrupt event
@@ -682,7 +670,6 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup TIMER_Mode_Type TIMER Mode Type
-//! \brief Values that show TIMER Mode Type
 //! Values that can be passed to TimerInitConfig(),TimerCounterInitConfig 
 //! ().
 //! @{
@@ -718,7 +705,6 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup TIMER_INT_Type TIMER INT Type
-//! \brief Values that show TIMER INT Type
 //! Values that can be passed to TimerIntEnable(), TimerIntEnable() ,
 //! TimerIntStatus(),TimerIntClear() as ulIntFlags .
 //! @{
@@ -739,7 +725,6 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup NUC122_TIMER_Exported_APIs NUC122 TIMER API
-//! \brief NUC122 TIMER API Reference.
 //! @{
 //
 //*****************************************************************************

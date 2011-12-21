@@ -74,8 +74,9 @@ TIMER0IntHandler(void)
 {
     unsigned long ulBase = TIMER0_BASE;
     unsigned long ulTemp0;
+    
     //
-    //! Clear the Timer INT Flag
+    // Clear the Timer INT Flag
     //
     ulTemp0 = (xHWREG(ulBase + TIMER_O_TISR) & TIMER_TISR_TIF);
     xHWREG(ulBase + TIMER_O_TISR) = ulTemp0;
@@ -105,7 +106,7 @@ TIMER1IntHandler(void)
     unsigned long ulBase = TIMER1_BASE;
     unsigned long ulTemp0;
     //
-    //! Clear the Timer INT Flag
+    // Clear the Timer INT Flag
     //
     ulTemp0 = (xHWREG(ulBase + TIMER_O_TISR) & TIMER_TISR_TIF);
     xHWREG(ulBase + TIMER_O_TISR) = ulTemp0;     
@@ -136,7 +137,7 @@ TIMER2IntHandler(void)
     unsigned long ulBase = TIMER2_BASE;
     unsigned long ulTemp0;
     //
-    //! Clear the Timer INT Flag
+    // Clear the Timer INT Flag
     //
     ulTemp0 = (xHWREG(ulBase + TIMER_O_TISR) & TIMER_TISR_TIF);
     xHWREG(ulBase + TIMER_O_TISR) = ulTemp0;     
@@ -167,7 +168,7 @@ TIMER3IntHandler(void)
     unsigned long ulBase = TIMER3_BASE;
     unsigned long ulTemp0;
     //
-    //! Clear the Timer INT Flag
+    // Clear the Timer INT Flag
     //
     ulTemp0 = (xHWREG(ulBase + TIMER_O_TISR) & TIMER_TISR_TIF);
     xHWREG(ulBase + TIMER_O_TISR) = ulTemp0;
@@ -246,13 +247,13 @@ TimerClockGet(unsigned long ulBase)
 
 //*****************************************************************************
 //
-//! \brief Configurate The Timer's mode and tick frequency. 
+//! \brief Configure The Timer's mode and tick frequency. 
 //!
 //! \param ulBase is the base address of the Timer port.
 //! \param ulConfig is the mode Configuratation of the Timer port.
 //! \param ulTickFreq is the tick frequency of the Timer port.
 //!
-//! This function is to configurate The Timer's mode and tick frequency.
+//! This function is to configure The Timer's mode and tick frequency.
 //!
 //! The \e ulConfig parameter can be one of the values:
 //! \b TIMER_MODE_ONESHOT, \b TIMER_MODE_PERIODIC, \b TIMER_MODE_TOGGLE and
@@ -315,7 +316,9 @@ TimerInitConfig(unsigned long ulBase, unsigned long ulConfig,
     {
         ulTCMPRValue = TimerClockGet(ulBase) / (ulTickFreq * ulPreScale);
 
-        /* The TCMPR value must > 1 */
+        //
+        // The TCMPR value must > 1
+        //
         if ((ulTCMPRValue > 1) && (ulTCMPRValue < 0x1000000))
             break;
     }
@@ -325,13 +328,13 @@ TimerInitConfig(unsigned long ulBase, unsigned long ulConfig,
 
 //*****************************************************************************
 //
-//! \brief Configurate The Timer as a counter and configurate mode and Boundary. 
+//! \brief Configure The Timer as a counter and configurate mode and Boundary. 
 //!
 //! \param ulBase is the base address of the Timer port.
 //! \param ulConfig is the mode Configuratation of the Timer port.
 //! \param ulTickFreq is the tick frequency of the Timer port.
 //!
-//! This function is to configurate The Timer as a counter and configurate 
+//! This function is to configure The Timer as a counter and configurate 
 //! mode and Boundary.
 //!
 //! The \e ulConfig parameter can be one of the values:
@@ -730,7 +733,7 @@ TimerIntDisable(unsigned long ulBase, unsigned long ulIntFlags)
 //! This function is to disable The Timer counter interrupt.
 //! 
 //! The \e ulIntFlags parameter can be one of the values:
-//! \b TIMER_INT_MATCH, \b TIMER_INT_CAP.
+//! \b TIMER_INT_MATCH.
 //!
 //! \note When use this API ,the ulIntFlags parameter one of the interrupt event
 //!
@@ -761,7 +764,7 @@ TimerIntStatus(unsigned long ulBase, unsigned long ulIntFlags)
 //! This function is to clear The Timer counter interrupt flag.
 //! 
 //! The \e ulIntFlags parameter can be one of the values:
-//! \b TIMER_INT_MATCH, \b TIMER_INT_CAP.
+//! \b TIMER_INT_MATCH.
 //!
 //! \note None
 //!

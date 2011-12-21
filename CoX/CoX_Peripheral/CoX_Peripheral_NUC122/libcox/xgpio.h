@@ -748,9 +748,6 @@ extern "C"
 //! 
 //! Details please refer to \ref xGPIO_General_Pin_IDs_CoX.
 //!
-//! \note xGPIOPadConfigSet() must also be used to configure the corresponding
-//! pad(s) in order for them to propagate the signal to/from the GPIO.
-//!
 //! \return None.
 //
 //*****************************************************************************
@@ -840,9 +837,6 @@ extern void xGPIODirModeSet(unsigned long ulPort, unsigned long ulPins,
 //!
 //! The pin is specified by eShortPin, which can only be one pin.
 //! Details please refer to \ref xGPIO_Short_Pin_CoX.
-//!
-//! \note xGPIOPadConfigSet() must also be used to configure the corresponding
-//! pad(s) in order for them to propagate the signal to/from the GPIO.
 //!
 //! \return None.
 //

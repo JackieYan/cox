@@ -75,11 +75,9 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup xSPI_Ints xSPI Interrupts
-//! \brief Values that show xSPI interrupts
 //! \n
 //! \section xSPI_Ints_Section 1. Where to use this group
-//! Values that can be passed to SPIIntEnable, SPIIntDisable, and SPIIntClear
-//! as the ulIntFlags parameter, and returned from SPIIntStatus. 
+//! Values that can be passed to SPIIntEnable, SPIIntDisable.
 //! \n
 //! \section xSPI_Ints_CoX 2. CoX Port Details 
 //! \verbatim
@@ -113,11 +111,9 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup xSPI_Ints_Event xSPI Interrupt Event
-//! \brief Values that show xSPI interrupt events.
 //! \n
 //! \section xSPI_Ints_Event_Section 1. Where to use this group
-//! Values that can be passed to SPIIntEnable, SPIIntDisable, and SPIIntClear
-//! as the ulIntFlags parameter, and returned from SPIIntStatus. 
+//! Values that can be passed to SPIIntEnable, SPIIntDisable.
 //! \n
 //! \section xSPI_Ints_Event_CoX 2. CoX Port Details 
 //! \verbatim
@@ -151,7 +147,6 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup xSPI_Config xSPI Configure
-//! \brief Values that show xSPI Configure
 //! \n
 //! \section xSPI_Config_Section 1. Where to use this group
 //! Values that can be passed to xSPIConfig()
@@ -221,17 +216,7 @@ extern "C"
 //
 //! Moto Format, polarity 1, phase 1
 //
-#define xSPI_MOTO_FORMAT_MODE_3 SPI_FORMAT_MODE_5
-                                            
-//
-//!  TI frame format
-//                                            
-#define xSPI_TI_FORMAT_MODE     0
-  
-//
-//! National MicroWire frame format
-//
-#define xSPI_NMW_FORMAT_MODE    0
+#define xSPI_MOTO_FORMAT_MODE_3 SPI_FORMAT_MODE_5                                          
 
 #define xSPI_MODE_MASTER        SPI_MODE_MASTER  
 #define xSPI_MODE_SLAVE         SPI_MODE_SLAVE  
@@ -281,7 +266,6 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup xSPI_SlaveSelMode xSPI Slave Select Mode
-//! \brief Values show xSPI Slave Select Mode
 //! \n
 //! \section xSPI_SlaveSelMode_Section 1. Where to use this group
 //! Values that can be passed to xSPISSSet()
@@ -313,7 +297,6 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup xSPI_SlaveSel xSPI Slave Select
-//! \brief Values that show xSPI Slave Select
 //! \n
 //! \section xSPI_SlaveSel_Section 1. Where to use this group
 //! Values that can be passed to xSPISSSet()
@@ -520,7 +503,7 @@ extern "C"
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SPIConfigSetExpClk().  For example, if the interface is configured for
+//! SPIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -544,7 +527,7 @@ extern "C"
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SPIConfigSetExpClk().  For example, if the interface is configured for
+//! SPIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -607,12 +590,8 @@ extern "C"
 //! \param xbMasked is \b false if the raw interrupt status is required or
 //! \b true if the masked interrupt status is required.
 //!
-//! This function returns the interrupt status for the SPI module.  Either the
-//! raw interrupt status or the status of interrupts that are allowed to
-//! reflect to the processor can be returned. 
-//!
-//! \return the SPI interrupt flag.It can be the following values:
-//! \b .
+//! \return the SPI interrupt flag state, if the flag set return 0x00010000,
+//! else return 0.  
 //
 //*****************************************************************************        
 #define xSPIStatusGet(ulBase, xbMasked)                                      \
@@ -762,8 +741,7 @@ extern void xSPISSSet(unsigned long ulBase, unsigned long ulSSMode,
 //*****************************************************************************
 //
 //! \addtogroup xSPI_Ints xSPI Interrupts
-//! \brief Values show that xSPI Interrupts
-//! Values that can be passed to SPIIntEnable, SPIIntDisable, and SPIIntClear
+//! \brief Values that can be passed to SPIIntEnable, SPIIntDisable, and SPIIntClear
 //! as the ulIntFlags parameter, and returned from SPIIntStatus.
 //! @{
 //
@@ -783,8 +761,7 @@ extern void xSPISSSet(unsigned long ulBase, unsigned long ulSSMode,
 //*****************************************************************************
 //
 //! \addtogroup NUC122_SPI_Config NUC122 SPI Configure
-//! \brief Values show that NUC122 SPI Configure
-//! Values that can be passed to SPIConfig.
+//! \brief Values that can be passed to SPIConfig.
 //! @{
 //
 //*****************************************************************************
@@ -846,7 +823,7 @@ extern void xSPISSSet(unsigned long ulBase, unsigned long ulSSMode,
 #define SPI_FORMAT_MODE_7       0x00000806 
 
 //
-//£¡ SPI master
+//£¡SPI master
 //
 #define SPI_MODE_MASTER         0x00000000  
 
@@ -1031,47 +1008,10 @@ extern void xSPISSSet(unsigned long ulBase, unsigned long ulSSMode,
 //
 //*****************************************************************************
 
-
-//*****************************************************************************
-//
-//! \addtogroup NUC122_SPI_SlaveSel NUC122 SPI Slave Select
-//! \brief Values that show NUC122 SPI Slave Select
-//! Values that can be passed to SPIAutoSSEnable() SPISSSet()and SPISSClear().
-//! @{
-//
-//*****************************************************************************
-
-//
-//! No Slave Select
-//
-#define SPI_SS_NONE             0x00000000
-
-//
-//! SPISSx0
-//
-#define SPI_SS0                 0x00000001  
-
-//
-//! SPISSx1
-//
-#define SPI_SS1                 0x00000002  
-
-//
-//! SPISSx0 and SPISSx1
-//
-#define SPI_SS0_SS1             0x00000003  
-
-//*****************************************************************************
-//
-//! @}
-//
-//*****************************************************************************
-
 //*****************************************************************************
 //
 //! \addtogroup NUC122_SPI_SlaveSel_Config NUC122 SPI Slave Select Configure
-//! \brief Values that show NUC122 SPI Slave Select Configure
-//! Values that can be passed to SPIAutoSSEnable() SPISSSet()  SPISSClear()
+//! \brief Values that can be passed to SPIAutoSSEnable() SPISSSet()  SPISSClear()
 //! SPISSConfig().
 //! @{
 //
@@ -1131,8 +1071,7 @@ extern void xSPISSSet(unsigned long ulBase, unsigned long ulSSMode,
 //*****************************************************************************
 //
 //! \addtogroup NUC122_SPI_ByteReorder NUC122 SPI Byte Reorder
-//! \brief Values that show NUC122 SPI Byte Reorder
-//! Values that can be passed to SPIByteReorderSet().
+//! \brief  Values that can be passed to SPIByteReorderSet().
 //! @{
 //
 //*****************************************************************************
@@ -1209,6 +1148,9 @@ extern xtBoolean SPIIsRxEmpty(unsigned long ulBase);
 extern xtBoolean SPIIsRxFull(unsigned long ulBase);
 extern xtBoolean SPIIsTxEmpty(unsigned long ulBase);
 extern xtBoolean SPIIsTxFull(unsigned long ulBase);
+extern unsigned long SPIFIFOStatusGet(unsigned long ulBase);
+extern void SPIFIFOModeSet(unsigned long ulBase, xtBoolean xtEnable, 
+                           unsigned long ulInterval);
 extern void SPIByteReorderSet(unsigned long ulBase, 
                               unsigned long ulByteReorder);
 extern void SPIVariableClockSet(unsigned long ulBase, unsigned long ulPattern, 

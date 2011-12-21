@@ -219,9 +219,10 @@ EINT1IntHandler
 GPABIntHandler
 GPCDIntHandler
 PWMAIntHandler
-PWMBIntHandler
 TIMER0IntHandler
 TIMER1IntHandler
+TIMER2IntHandler
+TIMER3IntHandler
 UART0IntHandler
 UART1IntHandler
 SPI0IntHandler
@@ -229,7 +230,6 @@ SPI1IntHandler
 I2C0IntHandler
 USBDIntHandler
 PS2IntHandler
-I2SIntHandler
 PWRWUIntHandler
 RTCIntHandler
                 B       .

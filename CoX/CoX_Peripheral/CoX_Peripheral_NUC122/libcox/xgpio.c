@@ -130,15 +130,21 @@ void GPABIntHandler(void)
     unsigned long ulGpaStatus, ulGpbStatus;
     unsigned long i;
     
-    /* Keep the interrupt source */
+    //
+    // Keep the interrupt source
+    //
     ulGpaStatus = xHWREG(GPIO_PORTA_BASE+GPIO_ISRC);
     ulGpbStatus = xHWREG(GPIO_PORTB_BASE+GPIO_ISRC);
 
-    /* Clear the interrupt */
+    //
+    // Clear the interrupt
+    //
     xHWREG(GPIO_PORTA_BASE+GPIO_ISRC) = ulGpaStatus;
     xHWREG(GPIO_PORTB_BASE+GPIO_ISRC) = ulGpbStatus;
 
-    /* Call the callback function of GPIOAB interrupt */
+    //
+    // Call the callback function of GPIOAB interrupt
+    //
     for(i=0; i<xGPIO_INT_NUMBER; i++)
     {
         if((g_psGPIOPinIntAssignTable[i].ulpinID & 0xFFFF0000) == 
@@ -185,20 +191,21 @@ void GPCDIntHandler(void)
 {
     unsigned long ulGpcStatus, ulGpdStatus;
     unsigned long i;
+    
     //
-    //Keep the interrupt source
+    // Keep the interrupt source
     //
     ulGpcStatus = xHWREG(GPIO_PORTC_BASE+GPIO_ISRC);
     ulGpdStatus = xHWREG(GPIO_PORTD_BASE+GPIO_ISRC);
 
     //
-    //Clear the interrupt
+    // Clear the interrupt
     //
     xHWREG(GPIO_PORTC_BASE+GPIO_ISRC) = ulGpcStatus;
     xHWREG(GPIO_PORTD_BASE+GPIO_ISRC) = ulGpdStatus;
 
     //
-    //Call the callback function of GPIOCDE interrupt
+    // Call the callback function of GPIOCD interrupt
     //
     for(i=0; i<xGPIO_INT_NUMBER; i++)
     {
@@ -1163,3 +1170,4 @@ GPIOPinFunctionSet(unsigned long ulFunction, unsigned long ulPort,
 
     }
 }
+

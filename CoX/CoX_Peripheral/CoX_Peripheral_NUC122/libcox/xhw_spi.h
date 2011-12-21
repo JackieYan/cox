@@ -150,32 +150,32 @@
 #define SPI_CNTRL_TX_NEG        0x00000004
 
 //
-//! Transmit Bit Length
+//! Transmit Bit Length Mask
 //
 #define SPI_CNTRL_TX_BIT_LEN_M  0x000000F8
 
 //
-//! Numbers of Transmit/Receive Word
+//! Transmit Bit Length Offset
 //
 #define SPI_CNTRL_TX_BIT_LEN_S  3
 
 //
-//!
+//! Numbers of Transmit/Receive Word
 //
 #define SPI_CNTRL_TX_NUM_M      0x00000300 
 
 //
-//!
+//! Transmit/Receive 1 Word
 //
 #define SPI_CNTRL_TX_NUM_1      0x00000000
 
 //
-//!
+//! Transmit/Receive 2 Word
 //
 #define SPI_CNTRL_TX_NUM_2      0x00000100
 
 //
-//!
+//! Numbers of Transmit/Receive Word offset
 //
 #define SPI_CNTRL_TX_NUM_S      8
 
@@ -190,12 +190,12 @@
 #define SPI_CNTRL_CLKP          0x00000800
 
 //
-//! Suspend Interval (Master Only)
+//! Suspend Interval Mask (Master Only)
 //
 #define SPI_CNTRL_SP_CYCLE_M    0x0000F000
 
 //
-//!
+//! Suspend Interval Offeset (Master Only)
 //
 #define SPI_CNTRL_SP_CYCLE_S    12
 
@@ -215,12 +215,12 @@
 #define SPI_CNTRL_SLAVE         0x00040000 
 
 //
-//! Reorder Mode Select
+//! Reorder Mode Select Mask
 //
 #define SPI_CNTRL_REORDER_M     0x00180000
 
 //
-//!
+//! Reorder Mode Select Offset
 //
 #define SPI_CNTRL_REORDER_S     19
 
@@ -289,7 +289,7 @@
 //*****************************************************************************
 //
 //! \addtogroup NUC122_SPI_Register_SPI_SSR SPI SSR Register(SPI_SSR)
-//! \brief efines for the bit fields in the SPI_SSR register.
+//! \brief Defines for the bit fields in the SPI_SSR register.
 //! @{
 //
 //*****************************************************************************
@@ -425,9 +425,6 @@
 //! @}
 //
 //*****************************************************************************
-
-
-
 
 //*****************************************************************************
 //

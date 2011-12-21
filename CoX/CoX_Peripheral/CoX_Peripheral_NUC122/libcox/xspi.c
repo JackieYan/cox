@@ -283,7 +283,7 @@ SPIConfig(unsigned long ulBase, unsigned long ulBitRate,
 
 //*****************************************************************************
 //
-//! \brief Read  and write a data element from and to the SPI interface.
+//! \brief Read and write a data element from and to the SPI interface.
 //!
 //! \param ulBase specifies the SPI module base address.
 //! \param ulWData is the data that was transmitted over the SPI interface.
@@ -377,7 +377,7 @@ SPIBitLengthGet(unsigned long ulBase)
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SSIConfigSetExpClk().  For example, if the interface is configured for
+//! SSIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -429,7 +429,7 @@ SPIDataRead(unsigned long ulBase, void *pulRData, unsigned long ulLen)
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SSIConfigSetExpClk().  For example, if the interface is configured for
+//! SSIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -479,7 +479,7 @@ SPIBurstDataRead(unsigned long ulBase, unsigned long *pulData)
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SSIConfigSetExpClk().  For example, if the interface is configured for
+//! SSIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -516,7 +516,7 @@ SPIRxRegisterGet(unsigned long ulBase, unsigned long *pulData,
 
 //*****************************************************************************
 //
-//! \brief Write  datas element to the SPI interface.
+//! \brief Write data element to the SPI interface.
 //!
 //! \param ulBase specifies the SSI module base address.
 //! \param pulWData is a pointer to a storage location for data that was
@@ -528,7 +528,7 @@ SPIRxRegisterGet(unsigned long ulBase, unsigned long *pulData,
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SSIConfigSetExpClk().  For example, if the interface is configured for
+//! SSIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -575,7 +575,7 @@ SPIDataWrite(unsigned long ulBase, void *pulWData, unsigned long ulLen)
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SSIConfigSetExpClk().  For example, if the interface is configured for
+//! SSIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -619,7 +619,7 @@ SPIBurstDataWrite(unsigned long ulBase, unsigned long *pulData)
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SSIConfigSetExpClk().  For example, if the interface is configured for
+//! SSIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -708,9 +708,6 @@ SPIBitGoBusyClear(unsigned long ulBase)
 //! \param ulBase specifies the SSI module base address.
 //! \param ulIntFlags specifies the type of SPI interrupt.
 //!
-//! This function is to enable the SPI interrupt of the specified SPI port 
-//! and install the callback function.
-//!
 //! \return None.
 //
 //*****************************************************************************
@@ -761,7 +758,6 @@ SPIIntCallbackInit(unsigned long ulBase, xtEventCallback xtSPICallback)
     }
 }
  
-
 //*****************************************************************************
 //
 //! \brief Disable the SPI interrupt of the specified SPI port.
@@ -789,10 +785,9 @@ SPIIntDisable(unsigned long ulBase)
 //!
 //! \param ulBase specifies the SSI module base address.
 //!
-//! This function is to get the SPI interrupt flag of the specified SPI port 
 //!
-//! \return the SPI interrupt flag.It can be the following values:
-//! \b .
+//! \return the SPI interrupt flag state, if the flag set return 0x00010000,
+//! else return 0. 
 //
 //*****************************************************************************
 unsigned long 
@@ -1137,6 +1132,78 @@ SPIIsTxFull(unsigned long ulBase)
     //
     xASSERT((ulBase == SPI0_BASE) || (ulBase == SPI1_BASE));
     return ((xHWREG(ulBase + SPI_CNTRL) & SPI_CNTRL_TX_FULL)? xtrue : xfalse);
+}
+
+//*****************************************************************************
+//
+//! \brief Check the status of the FIFO buffer of the specified SPI port.
+//!
+//! \param ulBase specifies the SPI module base address.
+//!
+//! This function Check the FIFO buffer status of the specified SPI module.
+//!
+//! \note Only the chips with the part number NUC1x0xxxCx, ex: NUC140VE3CN, 
+//! can support this function..
+//!
+//! \return Returns the FIFO buffer status of the specified SPI port.
+//! the return can be the OR of the following values:
+//! \b SPI_CNTRL_TX_FULL, \b SPI_CNTRL_RX_FULL, \b SPI_CNTRL_TX_EMPTY, or
+//! \b SPI_CNTRL_RX_EMPTY.
+//
+//*****************************************************************************
+unsigned long
+SPIFIFOStatusGet(unsigned long ulBase)
+{
+    //
+    // Check the arguments.
+    //
+    xASSERT((ulBase == SPI0_BASE) || (ulBase == SPI1_BASE)||
+            (ulBase == SPI2_BASE) || (ulBase == SPI3_BASE));
+    return (xHWREG(ulBase + SPI_CNTRL) & (SPI_CNTRL_TX_FULL) || 
+            (SPI_CNTRL_RX_FULL) || (SPI_CNTRL_TX_EMPTY) || (SPI_CNTRL_RX_EMPTY));
+}
+
+//*****************************************************************************
+//
+//! \brief Enable/disable the FIFO mode of the specified SPI port.
+//!
+//! \param ulBase specifies the SPI module base address.
+//! \param xtEnable enable the FIFO mode or not.
+//! \param ulInterval specifies the suspend interval.
+//!
+//! This function enable/disable the FIFO mode of the specified SPI module.
+//! If the caller enables FIFO mode,configure the setting of suspend cycle.
+//!
+//! The \e ulInterval can be 2~15 and 0.
+//! 0 indicates the maximum suspend interval;
+//! 2 indicates the minimum suspend interval.
+//!
+//! \note Only the chips with the part number NUC1x0xxxCx, ex: NUC140VE3CN, 
+//! can support this function.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void
+SPIFIFOModeSet(unsigned long ulBase, xtBoolean xtEnable, 
+               unsigned long ulInterval)
+{
+    //
+    // Check the arguments.
+    //
+    xASSERT((ulBase == SPI0_BASE) || (ulBase == SPI1_BASE)||
+            (ulBase == SPI2_BASE) || (ulBase == SPI3_BASE));
+    xASSERT((ulInterval == 0) ||((ulInterval >= 2) && (ulInterval <= 15)));
+    if (xtEnable)
+    {
+        xHWREG(ulBase + SPI_CNTRL) &= ~SPI_CNTRL_SP_CYCLE_M;
+        xHWREG(ulBase + SPI_CNTRL) |= (ulInterval << SPI_CNTRL_SP_CYCLE_S);
+        xHWREG(ulBase + SPI_CNTRL) |= SPI_CNTRL_FIFO;
+    }
+    else
+    {
+        xHWREG(ulBase + SPI_CNTRL) &= ~SPI_CNTRL_FIFO;
+    }  
 }
 
 //*****************************************************************************

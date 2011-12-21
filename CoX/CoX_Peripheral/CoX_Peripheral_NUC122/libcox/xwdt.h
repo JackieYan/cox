@@ -444,7 +444,7 @@ extern "C"
 
 //*****************************************************************************
 //
-//! \brief \brief Clear the Watchdog Timer Reset Flag of the WDT. 
+//! \brief Clear the Watchdog Timer Reset Flag of the WDT. 
 //!
 //! \param ulBase is the base address of the WatchDog Timer(WDT) module.
 //!
@@ -575,7 +575,6 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup NUC122_WDT_Exported_APIs NUC122 WDT API
-//! @{
 //! @{
 //
 //*****************************************************************************

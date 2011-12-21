@@ -2369,6 +2369,7 @@
 //*****************************************************************************
 //
 //! \addtogroup NUC122_SysCtl_Register_GCR_GPAMFP SysCtl GCR GPAMFP Register(GCR_GPAMFP)
+//! \brief Defines for the bit fields in the GCR_GPAMFP register.
 //! @{
 //
 //*****************************************************************************
@@ -2412,6 +2413,7 @@
 //*****************************************************************************
 //
 //! \addtogroup NUC122_SysCtl_Register_GCR_GPBMFP SysCtl GCR GPBMFP Register(GCR_GPBMFP)
+//! \brief Defines for the bit fields in the GCR_GPBMFP register.
 //! @{
 //
 //*****************************************************************************
@@ -2490,6 +2492,7 @@
 //*****************************************************************************
 //
 //! \addtogroup NUC122_SysCtl_Register_GCR_GPCMFP SysCtl GCR GPCMFP Register(GCR_GPCMFP)
+//! \brief Defines for the bit fields in the GCR_GPCMFP register.
 //! @{
 //
 //*****************************************************************************
@@ -2563,6 +2566,7 @@
 //*****************************************************************************
 //
 //! \addtogroup NUC122_SysCtl_Register_GCR_GPDMFP SysCtl GCR GPDMFP Register(GCR_GPDMFP)
+//! \brief Defines for the bit fields in the GCR_GPDMFP register.
 //! @{
 //
 //*****************************************************************************
@@ -2626,6 +2630,7 @@
 //*****************************************************************************
 //
 //! \addtogroup NUC122_SysCtl_Register_GCR_ALTMFP SysCtl GCR ALTMFP Register(GCR_ALTMFP)
+//! \brief Defines for the bit fields in the GCR_ALTMFP register.
 //! @{
 //
 //*****************************************************************************

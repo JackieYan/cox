@@ -734,7 +734,7 @@ extern unsigned long xSysCtlPeripheralIntNumGet(unsigned long ulPeripheralBase);
 //!
 //! \return None.
 //
-//*****************************************************************************                                          unsigned long ulDivide);
+//*****************************************************************************
 #define xSysCtlPeripheralClockSourceSet2(ePeripheral, eSrc, ulDivide)         \
         SysCtlIPClockSourceSetConvert(ePeripheral, eSrc, ulDivide)
 
@@ -1332,8 +1332,8 @@ extern void xSysCtlClockSet(unsigned long ulSysClk, unsigned long ulConfig);
 //*****************************************************************************
 //
 //! \addtogroup NUC122_SysCtl_Clock_Config NUC122 SysCtl Clock Configuration
-//! \brief The following are values that can be passed to the SysCtlClockSet() API as
-//! the ulConfig parameter.
+//! \brief The following are values that can be passed to the SysCtlClockSet() 
+//! API as the ulConfig parameter.
 //! @{
 //
 //*****************************************************************************
