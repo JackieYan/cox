@@ -61,7 +61,7 @@
 // An array is UART callback function point
 //
 //*****************************************************************************
-static xtEventCallback g_pfnUARTHandlerCallbacks[3]={0};
+static xtEventCallback g_pfnUARTHandlerCallbacks[2]={0};
 
 //*****************************************************************************
 //
@@ -86,12 +86,9 @@ UARTBaseValid(unsigned long ulBase)
 
 //*****************************************************************************
 //
-//! \internal
-//! \brief The function is the UART0 and UART2 interrupt service.
+//! \brief The function is the UART0 interrupt service.
 //!
 //! \param None.
-//!
-//! This function is a interrupt service routine of UART0 and UART2.
 //!
 //! \return None.
 //
@@ -111,12 +108,9 @@ UART0IntHandler(void)
 
 //*****************************************************************************
 //
-//! \internal
 //! \brief The function is the UART1 interrupt service.
 //!
 //! \param None.
-//!
-//! This function is a interrupt service routine of UART1
 //!
 //! \return None.
 //
@@ -141,9 +135,6 @@ UART1IntHandler(void)
 //! \brief The function is used to get Uart clock.
 //!
 //! \param ulBase is the base address of the UART port.
-//!
-//! This function gets the Uart clock
-//! when set the bandrate of UART.
 //!
 //! \return Returns the Current Uart Clock.
 //
@@ -272,7 +263,7 @@ UARTParityModeGet(unsigned long ulBase)
 
 //*****************************************************************************
 //
-//! \brief Sets the Sets the RX FIFO level.
+//! \brief Sets the RX FIFO level.
 //!
 //! \param ulBase is the base address of the UART port.
 //! \param ulRxLevel is the transmit FIFO interrupt level, specified as one of
@@ -464,7 +455,7 @@ UARTConfigSetExpClk(unsigned long ulBase,
 //! The baud rate and data format for the UART is determined, given an
 //! explicitly provided peripheral clock (hence the ExpClk suffix).  The
 //! returned baud rate is the actual baud rate; it may not be the exact baud
-//! rate requested or an ``official'' baud rate.  The data format returned in
+//! rate requested or an "official" baud rate.  The data format returned in
 //! \e pulConfig is enumerated the same as the \e ulConfig parameter of
 //! UARTConfigSetExpClk().
 //!
@@ -637,11 +628,11 @@ UARTEnable485(unsigned long ulBase )
 
 //*****************************************************************************
 //
-//! \brief Get the know the Tx FIFO is Empty or not from the specified port.
+//! \brief Get to know the Tx FIFO is Empty or not from the specified port.
 //!
 //! \param ulBase is the base address of the UART port.
 //!
-//! Get the know the Tx FIFO is Empty or not from the specified port.
+//! Get to know the Tx FIFO is Empty or not from the specified port.
 //!
 //! \return Returns the xtrue if Tx FIFO is Empty or returns xfalse
 //! \e xtBoolean.
@@ -664,11 +655,11 @@ UARTFIFOTxIsEmpty(unsigned long ulBase)
 
 //*****************************************************************************
 //
-//! \brief Get the know the Tx FIFO is full or not from the specified port.
+//! \brief Get to know the Tx FIFO is full or not from the specified port.
 //!
 //! \param ulBase is the base address of the UART port.
 //!
-//! Get the know the Tx FIFO is full or not from the specified port.
+//! Get to know the Tx FIFO is full or not from the specified port.
 //!
 //! \return Returns the xtrue if Tx FIFO is full or returns xfalse
 //! \e xtBoolean.
@@ -691,11 +682,11 @@ UARTFIFOTxIsFull(unsigned long ulBase)
 
 //*****************************************************************************
 //
-//! \brief Get the know the Tx FIFO length from the specified port.
+//! \brief Get to know the Tx FIFO length from the specified port.
 //!
 //! \param ulBase is the base address of the UART port.
 //!
-//! Get the know the Tx FIFO length from the specified port.
+//! Get to know the Tx FIFO length from the specified port.
 //!
 //! \return Returns the length of Tx FIFO
 //! \e long.
@@ -709,7 +700,6 @@ UARTFIFOTxLength(unsigned long ulBase)
     //
     xASSERT(UARTBaseValid(ulBase));
 
-
     //
     // Return the Tx FIFO length.
     //
@@ -718,11 +708,11 @@ UARTFIFOTxLength(unsigned long ulBase)
 
 //*****************************************************************************
 //
-//! \brief Get the know the Rx FIFO is Empty or not from the specified port.
+//! \brief Get to know the Rx FIFO is Empty or not from the specified port.
 //!
 //! \param ulBase is the base address of the UART port.
 //!
-//! Get the know the Rx FIFO is Empty or not from the specified port.
+//! Get to know the Rx FIFO is Empty or not from the specified port.
 //!
 //! \return Returns the xtrue if Rx FIFO is Empty or returns xfalse
 //! \e xtBoolean.
@@ -736,7 +726,6 @@ UARTFIFORxIsEmpty(unsigned long ulBase)
     //
     xASSERT(UARTBaseValid(ulBase));
 
-
     //
     // Return the Rx FIFO is empty or not.
     //
@@ -745,11 +734,11 @@ UARTFIFORxIsEmpty(unsigned long ulBase)
 
 //*****************************************************************************
 //
-//! \brief Get the know the Rx FIFO is full or not from the specified port.
+//! \brief Get to know the Rx FIFO is full or not from the specified port.
 //!
 //! \param ulBase is the base address of the UART port.
 //!
-//! Get the know the Rx FIFO is full or not from the specified port.
+//! Get to know the Rx FIFO is full or not from the specified port.
 //!
 //! \return Returns the xtrue if Rx FIFO is full or returns xfalse
 //! \e xtBoolean.
@@ -763,7 +752,6 @@ UARTFIFORxIsFull(unsigned long ulBase)
     //
     xASSERT(UARTBaseValid(ulBase));
 
-
     //
     // Return the Rx FIFO is full or not.
     //
@@ -772,7 +760,7 @@ UARTFIFORxIsFull(unsigned long ulBase)
 
 //*****************************************************************************
 //
-//! \brief Get the know the Rx FIFO length from the specified port.
+//! \brief Get to know the Rx FIFO length from the specified port.
 //!
 //! \param ulBase is the base address of the UART port.
 //!
@@ -1127,30 +1115,24 @@ UARTIntCallbackInit(unsigned long ulBase,
     {
         g_pfnUARTHandlerCallbacks[0] = xtUARTCallback;
     }
-    else if (ulBase == UART1_BASE)
-    {
-        g_pfnUARTHandlerCallbacks[1] = xtUARTCallback;    
-    }
     else
     {
-        g_pfnUARTHandlerCallbacks[2] = xtUARTCallback;
+        g_pfnUARTHandlerCallbacks[1] = xtUARTCallback;    
     }
 }
 
 //*****************************************************************************
 //
-//! \brief Enables individual UART interrupt sources.
+//! \brief Get individual UART interrupt sources.
 //!
 //! \param ulBase is the base address of the UART port.
 //! \param ulIntFlags is the bit mask of the interrupt sources to be enabled.
 //!
-//! Enables the indicated UART interrupt sources.  Only the sources that are
-//! enabled can be reflected to the processor interrupt; disabled sources have
-//! no effect on the processor.
+//! If the indicated UART interrupt sources, return xtrue, otherwise return 
+//! xfalse.
 //!
 //! The \e ulIntFlags parameter is the one of any of the following:
 //!
-//! - \b UART_INT_LIN    - LIN RX Break Field Detected Interrupt
 //! - \b UART_INT_WAKEUP - Wake up CPU function
 //! - \b UART_INT_BUFERR - Buffer Error Interrupt
 //! - \b UART_INT_RTO    - Rx Time out Interrupt
@@ -1352,8 +1334,6 @@ UARTModemControlSet(unsigned long ulBase, unsigned long ulControl)
 //!
 //! - \b UART_OUTPUT_RTS_SET - The Modem Control RTS signal 
 //!
-//! \note It is not available on UART2.
-//!
 //! \return None.
 //
 //*****************************************************************************
@@ -1380,8 +1360,6 @@ UARTModemControlClear(unsigned long ulBase, unsigned long ulControl)
 //!
 //! Returns the current states of each of the UART modem control signals,
 //! RTS.
-//!
-//! \note It is not available on UART2.
 //!
 //! \return Returns the states of the handshake output signals. 
 //! \b UART_OUTPUT_RTS_GET_H and\b UART_OUTPUT_RTS_GET_L
@@ -1414,8 +1392,6 @@ UARTModemControlGet(unsigned long ulBase)
 //! - \b UART_TRIGGER_CTS_H - The Modem Control DTR signal on high level triggered
 //! - \b UART_TRIGGER_CTS_L - The Modem Control RTS signal on low level triggered
 //!
-//! \note It is not available on UART2.
-//!
 //! \return None.
 //
 //*****************************************************************************
@@ -1443,8 +1419,6 @@ UARTModemStatusSet(unsigned long ulBase, unsigned long ulCtsTirg)
 //!
 //! Returns the current states of each of the UART modem status signals,
 //! CTS.
-//!
-//! \note It is not available on UART2.
 //!
 //! \return Returns the states of the handshake output signals.  
 //! \b UART_INPUT_CTS_H and\b UART_INPUT_CTS_L
@@ -1479,8 +1453,6 @@ UARTModemStatusGet(unsigned long ulBase)
 //! there is space available in the receive FIFO.  If no hardware flow control
 //! is required, UART_FLOWCONTROL_NONE should be passed.
 //!
-//! \note It is not available on UART2.
-//!
 //! \return None.
 //
 //*****************************************************************************
@@ -1508,8 +1480,6 @@ UARTFlowControlSet(unsigned long ulBase, unsigned long ulMode)
 //! \param ulBase is the base address of the UART port.
 //!
 //! Returns the current hardware flow control mode.
-//!
-//! \note It is not available on UART2.
 //!
 //! \return Returns the current flow control mode in use.  This is a
 //! logical OR combination of values \b UART_FLOWCONTROL_TX if transmit
@@ -1754,22 +1724,7 @@ xUARTIrDAConfig(unsigned long ulBase, unsigned long ulBaud,
 void
 UARTEnable(unsigned long ulBase, unsigned long ulBlock)
 {
-  /*
-    //
-    // Check the arguments.
-    //
-    xASSERT(UARTBaseValid(ulBase));
-    xASSERT((ulBlock & ~(0 | 0x80 | 0x40)) == 0);
 
-    if (ulBlock & UART_LIN_BCNT_TX_EN)
-    {
-        xHWREG(ulBase + UART_IRCR) |= UART_IRCR_TX_SELECT;
-    }
-    else
-    {
-        xHWREG(ulBase + UART_IRCR) &= ~UART_IRCR_TX_SELECT;
-    }
-  */
 }
 
 

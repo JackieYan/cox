@@ -133,7 +133,7 @@ extern "C"
 //! \n
 //! \section xTIMER_INT_Type_Section 1. Where to use this group
 //! Values that can be passed to xTimerIntEnable(), xTimerIntDisable() ,
-//! xTimerIntStatus(),xTimerIntClear() as ulIntFlags . 
+//! xTimerStatusGet() as ulIntFlags . 
 //! \n
 //! \section xTIMER_INT_Type_CoX 2. CoX Port Details 
 //! \verbatim
@@ -262,12 +262,6 @@ extern "C"
 //! the timer counts up.
 //
 #define xTIMER_COUNT_UP         0
-
-//
-//! The timer counts down.
-//
-#define xTIMER_COUNT_DOWN       0
-
 
 //*****************************************************************************
 //
@@ -597,7 +591,7 @@ extern "C"
 //! This function is to enable The Timer counter interrupt.
 //! 
 //! The \e ulIntFlags parameter is the OR value of any of the following:
-//! \b xTIMER_INT_MATCH, \b xTIMER_INT_CAP_EVENT.
+//! \b xTIMER_INT_MATCH
 //! Details please refer to \ref xTIMER_INT_Type_CoX
 //!
 //! \return None.
@@ -643,7 +637,7 @@ extern "C"
 //! This function is to disable The Timer counter interrupt.
 //! 
 //! The \e ulIntFlags parameter can be one of the values:
-//! \b xTIMER_INT_MATCH, \b xTIMER_INT_CAP_EVENT.
+//! \b xTIMER_INT_MATCH.
 //! Details please refer to \ref xTIMER_INT_Type_CoX.
 //!
 //! \note When use this API ,the ulIntFlags parameter one of the interrupt event

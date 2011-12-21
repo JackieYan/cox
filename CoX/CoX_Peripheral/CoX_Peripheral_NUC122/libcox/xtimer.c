@@ -74,6 +74,7 @@ TIMER0IntHandler(void)
 {
     unsigned long ulBase = TIMER0_BASE;
     unsigned long ulTemp0;
+    
     //
     //! Clear the Timer INT Flag
     //
@@ -315,7 +316,9 @@ TimerInitConfig(unsigned long ulBase, unsigned long ulConfig,
     {
         ulTCMPRValue = TimerClockGet(ulBase) / (ulTickFreq * ulPreScale);
 
-        /* The TCMPR value must > 1 */
+        //
+        // The TCMPR value must > 1
+        //
         if ((ulTCMPRValue > 1) && (ulTCMPRValue < 0x1000000))
             break;
     }
@@ -730,7 +733,7 @@ TimerIntDisable(unsigned long ulBase, unsigned long ulIntFlags)
 //! This function is to disable The Timer counter interrupt.
 //! 
 //! The \e ulIntFlags parameter can be one of the values:
-//! \b TIMER_INT_MATCH, \b TIMER_INT_CAP.
+//! \b TIMER_INT_MATCH.
 //!
 //! \note When use this API ,the ulIntFlags parameter one of the interrupt event
 //!
@@ -761,7 +764,7 @@ TimerIntStatus(unsigned long ulBase, unsigned long ulIntFlags)
 //! This function is to clear The Timer counter interrupt flag.
 //! 
 //! The \e ulIntFlags parameter can be one of the values:
-//! \b TIMER_INT_MATCH, \b TIMER_INT_CAP.
+//! \b TIMER_INT_MATCH.
 //!
 //! \note None
 //!

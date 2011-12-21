@@ -34,9 +34,6 @@
 //! \addtogroup xUART_App_Modem
 //! @{
 //! @}
-//! \addtogroup xUART_App_LIN
-//! @{
-//! @}
 //! @}
 //! @}
 //

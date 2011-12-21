@@ -91,9 +91,7 @@
 //! 
 //! The TIMER event counting is accessed with:
 //! - TimerCounterEnable(),
-//! - TimerCounterDetectPhaseSelect(),
-//! - TimerCounterDebounceEnable().
-//! - TimerCounterDebounceDisable()
+//! - TimerCounterDisable()
 //! .
 //! 
 //! <br />

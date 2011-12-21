@@ -166,7 +166,7 @@ extern "C"
 //! \n
 //! \section xUART_Event_Flag_Section 1. Where to use this group
 //! Uart Event/Error Flag, Used by IntHandle's Event Callback Function as 
-//! ulMsgParam parmeter. User Callback function can user this to detect what 
+//! ulMsgParam parmeter. User Callback function can use this to detect what 
 //! event happened.
 //! \n
 //! \section xUART_Event_Flag_CoX 2. CoX Port Details 
@@ -182,9 +182,9 @@ extern "C"
 //! |------------------------|----------------|------------------------|
 //! |xUART_EVENT_FE          |    Mandatory   |            Y           |
 //! |------------------------|----------------|------------------------|
-//! |xUART_EVENT_RT          |  Non-Mandatory |            N           |
+//! |xUART_EVENT_RT          |  Non-Mandatory |            Y           |
 //! |------------------------|----------------|------------------------|
-//! |xUART_EVENT_PE          |  Non-Mandatory |            N           |
+//! |xUART_EVENT_PE          |  Non-Mandatory |            Y           |
 //! |------------------------|----------------|------------------------|
 //! |xUART_EVENT_DSR         |  Non-Mandatory |            N           |
 //! |------------------------|----------------|------------------------|
@@ -333,9 +333,9 @@ extern "C"
 //! |------------------------|----------------|------------------------|
 //! |xUART_CONFIG_PAR_ODD    |    Mandatory   |            Y           |
 //! |------------------------|----------------|------------------------|
-//! |xUART_CONFIG_PAR_ONE    |  Non-Mandatory |            N           |
+//! |xUART_CONFIG_PAR_ONE    |  Non-Mandatory |            Y           |
 //! |------------------------|----------------|------------------------|
-//! |xUART_CONFIG_PAR_ZERO   |  Non-Mandatory |            N           |
+//! |xUART_CONFIG_PAR_ZERO   |  Non-Mandatory |            Y           |
 //! |------------------------|----------------|------------------------|
 //! |xUART_CONFIG_STOP_MASK  |    Mandatory   |            Y           |
 //! |------------------------|----------------|------------------------|
@@ -345,7 +345,7 @@ extern "C"
 //! |------------------------|----------------|------------------------|
 //! |xUART_CONFIG_STOP_0_5   |  Non-Mandatory |            N           |
 //! |------------------------|----------------|------------------------|
-//! |xUART_CONFIG_STOP_1_5   |  Non-Mandatory |            N           |
+//! |xUART_CONFIG_STOP_1_5   |  Non-Mandatory |            Y           |
 //! +------------------------+----------------+------------------------+
 //! \endverbatim
 //! @{
@@ -392,7 +392,10 @@ extern "C"
 #define xUART_CONFIG_STOP_2     UART_CONFIG_STOP_TWO
 
 #define xUART_CONFIG_STOP_0_5   0  
-#define xUART_CONFIG_STOP_1_5   0  
+//
+//! Used when 5 bits length is selected
+//  
+#define xUART_CONFIG_STOP_1_5   UART_CONFIG_STOP_TWO  
 
 //
 //! Mask for extracting parity
@@ -456,12 +459,6 @@ extern "C"
 //! IrDA Normal Mode
 //
 #define xUART_IRDA_MODE_NORMAL  0x00000000
-
-//
-//! IrDA Low-Power Mode
-//
-#define xUART_IRDA_MODE_LOW_POWER                                             \
-                                0
 
 //*****************************************************************************
 //
@@ -774,7 +771,7 @@ extern "C"
 //!
 //! Sets the UARTEN, or TXE or RXE bits.
 //!
-//! \note Do nothing in UART,In IrDA and LIN mode will set the Tx or Rx enable
+//! \note Do nothing in UART,In IrDA mode will set the Tx or Rx enable
 //!
 //! \return None.
 //
@@ -838,8 +835,7 @@ extern "C"
 //! \param ulBase is the base address of the UART port.
 //! \param ulRxLevel is the receive FIFO interrupt level, specified as one of
 //! \b xUART_FIFO_RX_1, \b xUART_FIFO_RX_4, \b xUART_FIFO_RX_8,
-//! \b xUART_FIFO_RX_14, \b xUART_FIFO_RX_30, \b xUART_FIFO_RX_46,
-//! or \b xUART_FIFO_RX_62.
+//! \b xUART_FIFO_RX_14.
 //!
 //! This function sets the FIFO level at which receive interrupts
 //! are generated.
@@ -891,7 +887,7 @@ extern "C"
 //!
 //! Gets a character from the receive FIFO for the specified port.
 //!
-//! This function replaces the original UARTCharNonBlockingGet() API and
+//! This function replaces the original UARTCharGetNonBlocking() API and
 //! performs the same actions.  A macro is provided in <tt>uart.h</tt> to map
 //! the original API to this API.
 //!
@@ -932,7 +928,7 @@ extern "C"
 //! This function does not block, so if there is no space available, then a
 //! \b false is returned, and the application must retry the function later.
 //!
-//! This function replaces the original UARTCharNonBlockingPut() API and
+//! This function replaces the original UARTCharPutNonBlocking() API and
 //! performs the same actions.  A macro is provided in <tt>uart.h</tt> to map
 //! the original API to this API.
 //!
@@ -1132,8 +1128,6 @@ extern "C"
 //!
 //! Returns the current states of each of the two UART modem control signals,
 //! DTR and RTS.
-//!
-//! \note It is not available on UART2
 //!
 //! \return Returns the states of the handshake output signals.  This will be a
 //! logical logical OR combination of values \b xUART_OUTPUT_RTS 
@@ -1386,8 +1380,8 @@ extern void xUARTIrDAConfig(unsigned long ulBase, unsigned long ulBaud,
 //*****************************************************************************
 //
 //! \addtogroup NUC122_UART_FIFO_Level NUC122 UART FIFO Level
-//! Values that can be passed to UARTIntEnable, UARTIntDisable, and UARTIntClear
-//! as the ulIntFlags parameter, and returned from UARTIntStatus.
+//! Values that can be passed to UARTFIFOTriggerLevelSet(), as the ulRxLevel
+//! parameter, and returned from UARTFIFOTriggerLevelGet().
 //! @{
 //
 //*****************************************************************************
@@ -1475,12 +1469,6 @@ extern void xUARTIrDAConfig(unsigned long ulBase, unsigned long ulBaud,
 #define UART_RXERROR_BREAK      0x00000040
 #define UART_RXERROR_PARITY     0x00000010
 #define UART_RXERROR_FRAMING    0x00000020
-
-//*****************************************************************************
-//
-//! @}
-//
-//*****************************************************************************
 
 //*****************************************************************************
 //

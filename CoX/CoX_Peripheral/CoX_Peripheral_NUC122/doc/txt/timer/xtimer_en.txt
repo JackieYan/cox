@@ -73,7 +73,6 @@
 //!   - \ref xTIMER_API_Mode_Config
 //!   - \ref xTIMER_API_Start_Stop
 //!   - \ref xTIMER_API_Event_Counting
-//!   - \ref xTIMER_API_Capture
 //!   - \ref xTIMER_API_Value_Set
 //!   - \ref xTIMER_API_Interrupt
 //!   .
@@ -156,8 +155,7 @@
 //! - xTimerIntCallbackInit()
 //! - xTimerIntEnable()
 //! - xTimerIntDisable()
-//! - xTimerIntStatus()
-//! - xTimerIntClear()
+//! - xTimerStatusGet()
 //! 
 //! <br />
 //! \section xTIMER_Usage 3. Usage & Program Examples
@@ -237,8 +235,7 @@
 //!         //
 //!         while(!xTimerStatusGet(TIMER0_BASE, 0, TIMER_INT_MATCH));
 //!         TimerIntClear(TIMER0_BASE, TIMER_INT_MATCH);
-//!     }  
-//!     
+//!     }      
 //!
 //! }
 //!

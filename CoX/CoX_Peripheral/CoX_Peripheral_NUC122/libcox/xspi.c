@@ -283,7 +283,7 @@ SPIConfig(unsigned long ulBase, unsigned long ulBitRate,
 
 //*****************************************************************************
 //
-//! \brief Read  and write a data element from and to the SPI interface.
+//! \brief Read and write a data element from and to the SPI interface.
 //!
 //! \param ulBase specifies the SPI module base address.
 //! \param ulWData is the data that was transmitted over the SPI interface.
@@ -377,7 +377,7 @@ SPIBitLengthGet(unsigned long ulBase)
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SSIConfigSetExpClk().  For example, if the interface is configured for
+//! SSIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -429,7 +429,7 @@ SPIDataRead(unsigned long ulBase, void *pulRData, unsigned long ulLen)
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SSIConfigSetExpClk().  For example, if the interface is configured for
+//! SSIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -479,7 +479,7 @@ SPIBurstDataRead(unsigned long ulBase, unsigned long *pulData)
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SSIConfigSetExpClk().  For example, if the interface is configured for
+//! SSIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -528,7 +528,7 @@ SPIRxRegisterGet(unsigned long ulBase, unsigned long *pulData,
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SSIConfigSetExpClk().  For example, if the interface is configured for
+//! SSIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -575,7 +575,7 @@ SPIDataWrite(unsigned long ulBase, void *pulWData, unsigned long ulLen)
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SSIConfigSetExpClk().  For example, if the interface is configured for
+//! SSIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -619,7 +619,7 @@ SPIBurstDataWrite(unsigned long ulBase, unsigned long *pulData)
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SSIConfigSetExpClk().  For example, if the interface is configured for
+//! SSIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -708,9 +708,6 @@ SPIBitGoBusyClear(unsigned long ulBase)
 //! \param ulBase specifies the SSI module base address.
 //! \param ulIntFlags specifies the type of SPI interrupt.
 //!
-//! This function is to enable the SPI interrupt of the specified SPI port 
-//! and install the callback function.
-//!
 //! \return None.
 //
 //*****************************************************************************
@@ -761,7 +758,6 @@ SPIIntCallbackInit(unsigned long ulBase, xtEventCallback xtSPICallback)
     }
 }
  
-
 //*****************************************************************************
 //
 //! \brief Disable the SPI interrupt of the specified SPI port.

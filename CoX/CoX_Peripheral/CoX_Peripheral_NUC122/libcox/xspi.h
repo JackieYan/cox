@@ -77,8 +77,7 @@ extern "C"
 //! \addtogroup xSPI_Ints xSPI Interrupts
 //! \n
 //! \section xSPI_Ints_Section 1. Where to use this group
-//! Values that can be passed to SPIIntEnable, SPIIntDisable, and SPIIntClear
-//! as the ulIntFlags parameter, and returned from SPIIntStatus. 
+//! Values that can be passed to SPIIntEnable, SPIIntDisable.
 //! \n
 //! \section xSPI_Ints_CoX 2. CoX Port Details 
 //! \verbatim
@@ -114,8 +113,7 @@ extern "C"
 //! \addtogroup xSPI_Ints_Event xSPI Interrupt Event
 //! \n
 //! \section xSPI_Ints_Event_Section 1. Where to use this group
-//! Values that can be passed to SPIIntEnable, SPIIntDisable, and SPIIntClear
-//! as the ulIntFlags parameter, and returned from SPIIntStatus. 
+//! Values that can be passed to SPIIntEnable, SPIIntDisable.
 //! \n
 //! \section xSPI_Ints_Event_CoX 2. CoX Port Details 
 //! \verbatim
@@ -218,17 +216,7 @@ extern "C"
 //
 //! Moto Format, polarity 1, phase 1
 //
-#define xSPI_MOTO_FORMAT_MODE_3 SPI_FORMAT_MODE_5
-                                            
-//
-//!  TI frame format
-//                                            
-#define xSPI_TI_FORMAT_MODE     0
-  
-//
-//! National MicroWire frame format
-//
-#define xSPI_NMW_FORMAT_MODE    0
+#define xSPI_MOTO_FORMAT_MODE_3 SPI_FORMAT_MODE_5                                          
 
 #define xSPI_MODE_MASTER        SPI_MODE_MASTER  
 #define xSPI_MODE_SLAVE         SPI_MODE_SLAVE  
@@ -515,7 +503,7 @@ extern "C"
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SPIConfigSetExpClk().  For example, if the interface is configured for
+//! SPIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -539,7 +527,7 @@ extern "C"
 //!
 //! \note Only the lower N bits of the value written to \e pulData contain
 //! valid data, where N is the data width as configured by
-//! SPIConfigSetExpClk().  For example, if the interface is configured for
+//! SPIConfig().  For example, if the interface is configured for
 //! 8-bit data width, only the lower 8 bits of the value written to \e pulData
 //! contain valid data.
 //!
@@ -1017,41 +1005,6 @@ extern void xSPISSSet(unsigned long ulBase, unsigned long ulSSMode,
 //! data width 32 bit
 //
 #define SPI_DATA_WIDTH32        0x00000000
-
-//*****************************************************************************
-//
-//! @}
-//
-//*****************************************************************************
-
-
-//*****************************************************************************
-//
-//! \addtogroup NUC122_SPI_SlaveSel NUC122 SPI Slave Select
-//! \brief  Values that can be passed to SPIAutoSSEnable() SPISSSet()and SPISSClear().
-//! @{
-//
-//*****************************************************************************
-
-//
-//! No Slave Select
-//
-#define SPI_SS_NONE             0x00000000
-
-//
-//! SPISSx0
-//
-#define SPI_SS0                 0x00000001  
-
-//
-//! SPISSx1
-//
-#define SPI_SS1                 0x00000002  
-
-//
-//! SPISSx0 and SPISSx1
-//
-#define SPI_SS0_SS1             0x00000003  
 
 //*****************************************************************************
 //

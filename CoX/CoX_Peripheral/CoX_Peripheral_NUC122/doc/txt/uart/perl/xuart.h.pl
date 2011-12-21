@@ -29,8 +29,6 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xADC API", "COX", "NUC1xx"  ],
-    [ "------------------------", "----------------","--------", ],
     [ "xUARTConfigSet", "Mandatory", "Y" ],
     [ "------------------------", "----------------","--------", ],
     [ "xUARTEnable", "Mandatory", "Y" ],
@@ -85,14 +83,7 @@ $tb->load(
     [ "------------------------", "----------------","--------", ],
 	[ "xUARTIrDADisable", "Non-Mandatory", "Y" ],
     [ "------------------------", "----------------","--------", ],
-	[ "xUARTLINConfig", "Non-Mandatory", "Y" ],
-    [ "------------------------", "----------------","--------", ],
-	[ "xUARTLINEnable", "Non-Mandatory", "Y" ],
-    [ "------------------------", "----------------","--------", ],
-	[ "xUARTLINDisable", "Non-Mandatory", "Y" ],
-    [ "------------------------", "----------------","--------", ],
 	
-
 );  
 
 # Print to console or file
@@ -135,7 +126,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xUART Interrupts", "COX", "NUC1xx"  ],
+    [ "xUART Interrupts", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xUART_INT_ERROR", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -198,7 +189,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xUART Events", "COX", "NUC1xx"  ],
+    [ "xUART Events", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xUART_EVENT_TX", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -265,7 +256,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xUART Error", "COX", "NUC1xx"  ],
+    [ "xUART Error", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xUART_RXERROR_OVERRUN", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -318,7 +309,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xUART Frame Config", "COX", "NUC1xx"  ],
+    [ "xUART Frame Config", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xUART_CONFIG_WLEN_MASK", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -350,7 +341,7 @@ $tb->load(
     [ "------------------------", "----------------","------------------------", ],
     [ "xUART_CONFIG_STOP_0_5", "Non-Mandatory", "N" ],
     [ "------------------------", "----------------","------------------------", ],
-    [ "xUART_CONFIG_STOP_1_5", "Non-Mandatory", "N" ],
+    [ "xUART_CONFIG_STOP_1_5", "Non-Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
 );  
 
@@ -395,7 +386,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xUART IrDA Mode", "COX", "NUC1xx"  ],
+    [ "xUART IrDA Mode", "CoX", "NUC122"  ],
     [ "-------------------------", "----------------","------------------------", ],
     [ "xUART_IRDA_MODE_NORMAL", "Mandatory", "Y" ],
     [ "-------------------------", "----------------","------------------------", ],
@@ -443,7 +434,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xUART Enable Block", "COX", "NUC1xx"  ],
+    [ "xUART Enable Block", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xUART_BLOCK_UART", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -494,7 +485,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "FIFO Rx Tiggle Level", "COX", "NUC1xx"  ],
+    [ "FIFO Rx Tiggle Level", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xUART_FIFO_RX_n", "Mandatory", "xUART_FIFO_RX_1" ],
     [ "", "", "------------------------", ],
@@ -503,12 +494,6 @@ $tb->load(
     [ "", "", "xUART_FIFO_RX_8" ],
     [ "", "", "------------------------", ],
     [ "", "", "xUART_FIFO_RX_14" ],
-    [ "", "", "------------------------", ],
-    [ "", "", "xUART_FIFO_RX_30" ],
-    [ "", "", "------------------------", ],
-    [ "", "", "xUART_FIFO_RX_46" ],
-    [ "", "", "------------------------", ],
-    [ "", "", "xUART_FIFO_RX_62" ],
     [ "------------------------", "----------------","------------------------", ],
 );  
 
@@ -552,7 +537,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xUART Modem Output", "COX", "NUC1xx"  ],
+    [ "xUART Modem Output", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xUART_OUTPUT_RTS", "Non-Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -600,7 +585,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xUART Modem Input", "COX", "NUC1xx"  ],
+    [ "xUART Modem Input", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xUART_INPUT_CTS", "Non-Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -652,7 +637,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xUART Flow Control", "COX", "NUC1xx"  ],
+    [ "xUART Flow Control", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xUART_FLOWCONTROL_TX", "Non-Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -669,61 +654,3 @@ print $tb;
 #
 ###############################################################################
 
-
-###############################################################################
-# xUART_LIN_Config
-###############################################################################
-use Text::Table;
-my $tb = Text::Table->new(
-    # First separator column 
-    { is_sep => 1, title => "//! +", body => "//! |", },
-    
-    # Column 1
-    { title => "-----------------------------", align => left, },
-    
-    # Separator column
-    { is_sep => 1, title => "+", body => "|", },
-    
-    # Column 2
-    { title => "----------------", align => center, },
-    
-    # Separator column
-    { is_sep => 1, title => "+", body => "|", },
-    
-    # Column 3
-    { title => "-------------------", align => center, },
-    
-    # End separator column
-    { is_sep => 1, title => "+", body => "|", },
-); 
-
-    
-# Fill Table Cotent
-$tb->load(
-    # Line 0(Column Name)
-    [ "xUART LIN Configuration", "COX", "NUC1xx"  ],
-    [ "-----------------------------", "----------------","-------------------", ],
-    [ "xUART_LIN_MODE_MASK", "Non-Mandatory", "N" ],
-    [ "-----------------------------", "----------------","-------------------", ],
-    [ "xUART_LIN_MODE_MASTER", "Non-Mandatory", "N" ],
-    [ "-----------------------------", "----------------","-------------------", ],
-    [ "xUART_LIN_MODE_SLAVE", "Non-Mandatory", "N" ],
-    [ "-----------------------------", "----------------","-------------------", ],
-    [ "xUART_LIN_SYNC_BREAK_LEN_MASK", "Non-Mandatory", "Y" ],
-    [ "-----------------------------", "----------------","-------------------", ],
-    [ "xUART_LIN_SYNC_BREAK_LEN_13", "Non-Mandatory", "Y" ],
-    [ "-----------------------------", "----------------","-------------------", ],
-    [ "xUART_LIN_SYNC_BREAK_LEN_14", "Non-Mandatory", "Y" ],
-    [ "-----------------------------", "----------------","-------------------", ],
-    [ "xUART_LIN_SYNC_BREAK_LEN_15", "Non-Mandatory", "Y" ],
-    [ "-----------------------------", "----------------","-------------------", ],
-    [ "xUART_LIN_SYNC_BREAK_LEN_16", "Non-Mandatory", "Y" ],
-    [ "-----------------------------", "----------------","-------------------", ],
-);  
-
-# Print to console or file
-print "\n#####xUART_LIN_Config\n";
-print $tb; 
-###############################################################################
-#
-###############################################################################

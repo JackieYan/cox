@@ -60,7 +60,6 @@
 //! - SPIFIFOModeSet()
 //! - SPIByteReorderSet()
 //! - SPIVariableClockSet()
-//! - SPIDivOneFunction()
 //! .
 //!
 //! <br />

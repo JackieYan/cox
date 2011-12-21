@@ -29,7 +29,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER Mode", "COX", "NUC1xx"  ],
+    [ "xTIMER Mode", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_MODE_ONESHOT", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -85,11 +85,11 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER Interrupt", "COX", "NUC1xx"  ],
+    [ "xTIMER Interrupt", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_INT_MATCH", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
-    [ "xTIMER_INT_CAP_EVENT", "Mandatory", "Y" ],
+    [ "xTIMER_INT_CAP_EVENT", "Mandatory", "N" ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_INT_CAP_MATCH", "Non-Mandatory", "N" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -140,11 +140,11 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER Counter Pase Type", "COX", "NUC1xx"  ],
+    [ "xTIMER Counter Pase Type", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_COUNTER_RISING", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
-    [ "xTIMER_COUNTER_FALLING", "Mandatory", "Y" ],
+    [ "xTIMER_COUNTER_FALLING", "Mandatory", "N" ],
     [ "------------------------", "----------------","------------------------", ],
 );  
 
@@ -154,105 +154,6 @@ print $tb;
 ###############################################################################
 #
 ###############################################################################
-
-
-
-###############################################################################
-# xTIMER_Capture_Edge_Type
-###############################################################################
-use Text::Table;
-my $tb = Text::Table->new(
-    # First separator column 
-    { is_sep => 1, title => "//! +", body => "//! |", },
-    
-    # Column 1
-    { title => "------------------------", align => left, },
-    
-    # Separator column
-    { is_sep => 1, title => "+", body => "|", },
-    
-    # Column 2
-    { title => "----------------", align => center, },
-    
-    # Separator column
-    { is_sep => 1, title => "+", body => "|", },
-    
-    # Column 3
-    { title => "------------------------", align => center, },
-    
-    # End separator column
-    { is_sep => 1, title => "+", body => "|", },
-); 
-
-    
-# Fill Table Cotent
-$tb->load(
-    # Line 0(Column Name)
-    [ "xTIMER Capture Edge", "COX", "NUC1xx"  ],
-    [ "------------------------", "----------------","------------------------", ],
-    [ "xTIMER_CAP_RISING", "Mandatory", "Y" ],
-    [ "------------------------", "----------------","------------------------", ],
-    [ "xTIMER_CAP_FALLING", "Mandatory", "Y" ],
-    [ "------------------------", "----------------","------------------------", ],
-    [ "xTIMER_CAP_BOTH", "Non-Mandatory", "Y" ],
-    [ "------------------------", "----------------","------------------------", ],
-);  
-
-# Print to console or file
-print "\n#####xTIMER_Capture_Edge_Type\n";
-print $tb; 
-###############################################################################
-#
-###############################################################################
-
-
-
-###############################################################################
-# xTIMER_Capture_Mode_Type
-###############################################################################
-use Text::Table;
-my $tb = Text::Table->new(
-    # First separator column 
-    { is_sep => 1, title => "//! +", body => "//! |", },
-    
-    # Column 1
-    { title => "------------------------", align => left, },
-    
-    # Separator column
-    { is_sep => 1, title => "+", body => "|", },
-    
-    # Column 2
-    { title => "----------------", align => center, },
-    
-    # Separator column
-    { is_sep => 1, title => "+", body => "|", },
-    
-    # Column 3
-    { title => "------------------------", align => center, },
-    
-    # End separator column
-    { is_sep => 1, title => "+", body => "|", },
-); 
-
-    
-# Fill Table Cotent
-$tb->load(
-    # Line 0(Column Name)
-    [ "xTIMER Capture Mode", "COX", "NUC1xx"  ],
-    [ "------------------------", "----------------","------------------------", ],
-    [ "xTIMER_CAP_MODE_CAP", "Mandatory", "Y" ],
-    [ "------------------------", "----------------","------------------------", ],
-    [ "xTIMER_CAP_MODE_RST", "Non-Mandatory", "Y" ],
-    [ "------------------------", "----------------","------------------------", ],
-);  
-
-# Print to console or file
-print "\n#####xTIMER_Capture_Mode_Type\n";
-print $tb; 
-###############################################################################
-#
-###############################################################################
-
 
 
 ###############################################################################
@@ -286,7 +187,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER Count Direction", "COX", "NUC1xx"  ],
+    [ "xTIMER Count Direction", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_COUNT_UP", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -334,7 +235,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER Count Channel", "COX", "NUC1xx"  ],
+    [ "xTIMER Count Channel", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_CHANNELn", "Mandatory", "xTIMER_CHANNEL0" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -381,7 +282,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER API", "COX", "NUC1xx"  ],
+    [ "xTIMER API", "CoX", "NUC122"  ],
     [ "------------------------------", "----------------","------------------", ],
     [ "xTimerInitConfig", "Mandatory", "Y" ],
     [ "------------------------------", "----------------","------------------", ],
@@ -392,8 +293,6 @@ $tb->load(
     [ "xTimerCounterEnable", "Mandatory", "Y" ],
     [ "------------------------------", "----------------","------------------", ],
     [ "xTimerCounterDisable", "Mandatory", "Y" ],
-    [ "------------------------------", "----------------","------------------", ],
-    [ "xTimerCaptureModeSet", "Mandatory", "Y" ],
     [ "------------------------------", "----------------","------------------", ],
     [ "xTimerPrescaleSet", "Mandatory", "Y" ],
     [ "------------------------------", "----------------","------------------", ],
@@ -416,12 +315,6 @@ $tb->load(
     [ "xTimerIntDisable", "Mandatory", "Y" ],
     [ "------------------------------", "----------------","------------------", ],
     [ "xTimerIntStatus", "Mandatory", "Y" ],
-    [ "------------------------------", "----------------","------------------", ],
-    [ "xTimerIntClear", "Mandatory", "Y" ],
-    [ "------------------------------", "----------------","------------------", ],
-    [ "xTimerCounterDetectPhaseSelect", "Mandatory", "Y" ],
-    [ "------------------------------", "----------------","------------------", ],
-    [ "xTimerCaptureEdgeSelect", "Mandatory", "Y" ],
     [ "------------------------------", "----------------","------------------", ],
 );  
 

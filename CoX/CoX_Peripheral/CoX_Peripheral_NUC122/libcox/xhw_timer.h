@@ -55,7 +55,7 @@
 
 //*****************************************************************************
 //
-//! \addtogroup NUC122_TIMER_Register NUC122_TIMER_Register
+//! \addtogroup NUC122_TIMER_Register NUC122 TIMER Register
 //! \brief Here are the detailed info of TIMER registers. 
 //!
 //! it contains:

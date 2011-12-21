@@ -28,7 +28,7 @@
 //!
 //! \n
 //! \section UART_Blcok 1. UART Physical Block
-//! <img src="NUC1xx_UART_block.png" />
+//! <img src="NUC122_UART_block.png" />
 //!
 //!
 //! \n
