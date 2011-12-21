@@ -69,7 +69,7 @@ static unsigned long s_ulExtClockMHz = 12;
                                 ((0x3) << ((((a) & 0x1f0000) >> 16))))
 //*****************************************************************************
 //
-// This macro constructs the peripheral bit mask from the peripheral clock source.
+// This macro constructs the peripheral bit mask from the clock divder.
 //
 //*****************************************************************************
 #define SYSCTL_PERIPH_MASK_DIV(a)                                             \
@@ -79,7 +79,7 @@ static unsigned long s_ulExtClockMHz = 12;
 
 //*****************************************************************************
 //
-// This macro constructs the peripheral bit mask from the peripheral clock source.
+// This macro constructs the peripheral enum of the peripheral clock source.
 //
 //*****************************************************************************
 #define SYSCTL_PERIPH_ENUM_CLK(a)                                             \
@@ -172,8 +172,8 @@ tPeripheralTable;
 
 //*****************************************************************************
 //
-// An array that maps the peripheral base and peripheral ID and interrupt number
-// together to enablea peripheral or peripheral interrupt by a peripheral base.
+//! An array that maps the peripheral base and peripheral ID and interrupt number
+//! together to enablea peripheral or peripheral interrupt by a peripheral base.
 //
 //*****************************************************************************
 static const tPeripheralTable g_pPeripherals[] =
@@ -708,7 +708,7 @@ xSysCtlPeripheralClockSourceSet(unsigned long ulPeripheralSrc,
     xASSERT((ulDivide <= 256) && (ulDivide >= 1));
 
     //
-    // Set  this peripheral clock source
+    // Set the peripheral clock source
     //
     SysCtlKeyAddrUnlock();
     xHWREG(g_pulCLKSELRegs[SYSCTL_PERIPH_INDEX_CLK(ulPeripheralSrc)]) &=
@@ -844,7 +844,7 @@ SysCtlPeripheralDisable(unsigned long ulPeripheral)
     xASSERT(SysCtlPeripheralValid(ulPeripheral));
 
     //
-    // Enable this peripheral.
+    // Disable this peripheral.
     //
     SysCtlKeyAddrUnlock();
     xHWREG(g_pulAXBCLKRegs[SYSCTL_PERIPH_INDEX_E(ulPeripheral)]) &=
@@ -896,7 +896,7 @@ void
 SysCtlSleep(void)
 {
     //
-    // Wait for an interrupt.
+    // Wait for an interrupt to wake up.
     //
     SysCtlPowerDownEnable(1);
     SysCtlPowerDownWaitCPUSet(1);
@@ -1128,7 +1128,7 @@ SysCtlSysTickSourceSet(unsigned long ulHclkSrcSel)
            );
 
     //
-    // Enable HCLK clock source.
+    // Enable SysTickclock source.
     //
     SysCtlKeyAddrUnlock();
     xHWREG(SYSCLK_CLKSEL0) &=~SYSCLK_CLKSEL0_STCLK_M;
@@ -1549,7 +1549,7 @@ void
 SysCtlPowerDownEnable(xtBoolean bEnable)
 {    
     //
-    // Enable BOD reset function or interrupt function.
+    // Enable or active power down function.
     //
     SysCtlKeyAddrUnlock();
     if(bEnable)
@@ -1682,10 +1682,6 @@ SysCtlHClockGet(void)
 void
 SysCtlHClockSet(unsigned long ulConfig)
 {
-    //
-    // Check the arguments .
-    //
-    //xASSERT((ulConfig & 0XFF)<=64);
 
     s_ulExtClockMHz = ((ulConfig & SYSCTL_XTAL_MASK) >> 8);
     SysCtlKeyAddrUnlock();
@@ -1746,7 +1742,7 @@ SysCtlHClockSet(unsigned long ulConfig)
         
     }
     //
-    // HLCK clock source is SYSCLK_CLKSEL0_HCLK12M
+    // HLCK clock source is SYSCLK_CLKSEL0_HCLKPLL
     //
     else if(((ulConfig & 0xF0) >> 4) == SYSCLK_CLKSEL0_HCLKPLL)
     {
@@ -1843,7 +1839,7 @@ SysCtlHClockSet(unsigned long ulConfig)
         }
     }
     //
-    // HLCK clock source is SYSCLK_CLKSEL0_HCLK12M
+    // HLCK clock source is SYSCLK_PWRCON_OSC22M_EN
     //
     else 
     {

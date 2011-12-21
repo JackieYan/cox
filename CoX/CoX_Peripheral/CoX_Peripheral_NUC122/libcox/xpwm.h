@@ -345,8 +345,7 @@ extern "C"
 //!
 //! This function is to initialize and configure channel of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulChannel parameter can be value 0~3,
+//! The \e ulChannel parameter can be values:0~3,
 //!
 //! The \e ulConfig parameter is the logical OR of four values: The PWM mode,
 //! Inverter or not,and use dead zero or not and dead zone length. 
@@ -359,8 +358,7 @@ extern "C"
 //! Details please refer to \ref xPWM_Config_CoX.
 //!
 //! \note When Dead-Zone Generator is enabled, the pair of PWM0 and PWM1 
-//! becomes a complementary pair for PWM group A and the pair of PWM4 and 
-//! PWM5 becomes a complementary pair for PWM group B.
+//! becomes a complementary pair for PWM group A.
 //!
 //! \return None.
 //
@@ -378,13 +376,10 @@ extern "C"
 //!
 //! This function is to set the PWM frequency of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulChannel parameter can be value 0~3,
+//! The \e ulChannel parameter can be values:0~3.
 //!
 //! The \e ulFrequency parameter can be values: Any values ,ulFrequency > 0 &&
 //! ulFrequency < PWM module input clock.
-//!
-//! \note 
 //!
 //! \return the Actual Frequency of PWM.
 //
@@ -403,8 +398,7 @@ extern "C"
 //!
 //! This function is to set the PWM frequency of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulChannel parameter can be value 0~3
+//! The \e ulChannel parameter can be values:0~3.
 //!
 //! The \e ulConfig parameter is the logical OR of three values: The PreScale
 //! value, The Divider value and the PWM Counter Register value.
@@ -427,10 +421,7 @@ extern "C"
 //!
 //! This function is to get the PWM frequency of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulChannel parameter can be value 0~3.
-//!
-//! \note None
+//! The \e ulChannel parameter can be values:0~3.
 //!
 //! \return the Actual Frequency of PWM.
 //
@@ -447,10 +438,7 @@ extern "C"
 //!
 //! This function is to enable the PWM output of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulBase is PWMA_BASE,the \e ulChannel parameter can be value 0~3.
-//!
-//! \note None
+//! The \e ulChannel parameter can be values: 0~3.
 //!
 //! \return None.
 //
@@ -467,8 +455,7 @@ extern "C"
 //!
 //! This function is to disable the PWM output of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulChannel parameter can be value 0~3,
+//! The \e ulChannel parameter can be values:0~3.
 //!
 //! \return None.
 //
@@ -485,8 +472,7 @@ extern "C"
 //!
 //! This function is to start the PWM of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulChannel parameter can be value 0~3
+//! The \e ulChannel parameter can be values:0~3.
 //!
 //! \return None.
 //
@@ -503,8 +489,7 @@ extern "C"
 //!
 //! This function is to stop the PWM of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulChannel parameter can be value 0~3
+//! The \e ulChannel parameter can be values:0~3
 //!
 //! \return None.
 //
@@ -522,8 +507,7 @@ extern "C"
 //!
 //! This function is to set the PWM duty of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulChannel parameter can be value 0~3
+//! The \e ulChannel parameter can be values:0~3
 //!
 //! The \e ulDuty parameter can be values:  duty > 0 && duty <= 100. 
 //!
@@ -544,10 +528,7 @@ extern "C"
 //!
 //! This function is to get the PWM duty of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulChannel parameter can be value 0~3
-//!
-//! \note None
+//! The \e ulChannel parameter can be values:0~3.
 //!
 //! \return the Actual duty of PWM.
 //
@@ -566,8 +547,7 @@ extern "C"
 //!
 //! This function is to enable the PWM interrupt of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulChannel parameter can be value 0~3,
+//! The \e ulChannel parameter can be values:0~3.
 //!
 //! The \e ulIntType parameter can be values:
 //! \b xPWM_INT_PWM.
@@ -590,8 +570,7 @@ extern "C"
 //!
 //! This function is to disable the PWM interrupt of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulChannel parameter can be value 0~3,
+//! The \e ulChannel parameter can be values:0~3.
 //!
 //! The \e ulIntType parameter can be values:
 //! \b xPWM_INT_PWM.
@@ -614,8 +593,7 @@ extern "C"
 //!
 //! This function is to get the PWM interrupt flag of the PWM module.
 //!
-//! The \e ulChannel parameter can be values:
-//! the \e ulChannel parameter can be value 0~3
+//! The \e ulChannel parameter can be values:0~3
 //!
 //! The \e ulIntType parameter can be values:
 //! \b xPWM_INT_PWM.
@@ -758,7 +736,7 @@ extern "C"
 //*****************************************************************************
 //
 //! \addtogroup NUC122_PWM_Clock_div NUC122 PWM Clock Divide
-//! \brief Values that can be passed to all the function in xpwm.c.
+//! \brief Values that can be passed the function PWMFrequencyGet().
 //! @{
 //
 //*****************************************************************************

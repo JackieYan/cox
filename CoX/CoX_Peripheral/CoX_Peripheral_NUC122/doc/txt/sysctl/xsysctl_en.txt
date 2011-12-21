@@ -191,7 +191,6 @@
 //! \subsection xSysCtl_API_Group_Sleep 2.5 System control
 //! 
 //! The processor can be put into sleep mode with :
-//! - xSysCtlSleep()
 //! - xSysCtlSleep().
 //! .
 //!
@@ -199,7 +198,7 @@
 //! \section  XSYSCLT_Usage 3. Usage & Program Examples
 //! The following example shows how to use the SysCtl API to configure the 
 //! system clock, enable the related peripherals, and put the processor into 
-//! sleep mode, and then wake up by RTC interrupt. 
+//! sleep mode, and then wake up by SysTick interrupt. 
 //! 
 //! \code
 //! #include "xcore.h"
@@ -227,19 +226,13 @@
 //! //
 //! // Systick Interrupt serive function
 //! //
-//! // When the interupt happen ,print some words In the super terminal through 
-//! // uart0.
+//! // When the interupt happen ,print some words In the super terminal through uart0.
 //! //
 //! // return none
 //! //
 //! //*****************************************************************************
 //! void IntSystickHandler(void)
-//! {
-//!    //
-//!    //Clear the systick pending bit  
-//!    //
-//!    //  xIntPendClear(FAULT_SYSTICK);
-//!     
+//!{ 
 //!    //
 //!    // Print a "hello systick" through uart0
 //!    //
@@ -283,7 +276,7 @@
 //!    //
 //!    // Enter the sleep mode
 //!    //
-//!    xCPUwfi();
+//!    xSysCtlSleep();
 //!    
 //!    //
 //!    // go on excute Print code words after wake up. 
@@ -311,8 +304,8 @@
 //!    //
 //!    // Configure the UART for 115,200, 8-N-1 operation.
 //!    //
-//!    xUARTConfigSet(UART0_BASE, 115200 ,
-//!         (xUART_CONFIG_WLEN_8 | xUART_CONFIG_STOP_1 | xUART_CONFIG_PAR_NONE));
+//!    xUARTConfigSet(UART0_BASE,115200,xUART_CONFIG_WLEN_8 | xUART_CONFIG_STOP_1
+//!                                                         | xUART_CONFIG_PAR_NONE));
 //!
 //! }
 //!

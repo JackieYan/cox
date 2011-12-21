@@ -29,7 +29,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xPWM Interrupt Source", "COX", "NUC1xx"  ],
+    [ "xPWM Interrupt Source", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","--------", ],
     [ "xPWM_INT_PWM", "Mandatory", "Y" ],
     [ "------------------------", "----------------","--------", ],
@@ -73,7 +73,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xPWM Event Source", "COX", "NUC1xx"  ],
+    [ "xPWM Event Source", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","--------", ],
     [ "xPWM_EVENT_PWM", "Mandatory", "Y" ],
     [ "------------------------", "----------------","--------", ],
@@ -119,7 +119,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xPWM Freq Config", "COX", "NUC1xx"  ],
+    [ "xPWM Freq Config", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","--------", ],
     [ "xPWM_FREQ_CONFIG(a,b,c)", "Mandatory", "Y" ],
 	[ "a is The Divider value", "", "" ],
@@ -166,7 +166,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xPWM Channel Number", "COX", "NUC1xx"  ],
+    [ "xPWM Channel Number", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","-------------", ],
     [ "xPWM_CHANNEL$x\$", "Non-Mandatory", "xPWM_CHANNEL0" ],
     [ "", "","-------------", ],
@@ -175,14 +175,6 @@ $tb->load(
 	[ "", "", "xPWM_CHANNEL2" ],
 	[ "", "","-------------", ],
 	[ "", "", "xPWM_CHANNEL3" ],
-	[ "", "","-------------", ],
-	[ "", "", "xPWM_CHANNEL4" ],
-	[ "", "","-------------", ],
-	[ "", "", "xPWM_CHANNEL5" ],
-	[ "", "","-------------", ],
-	[ "", "", "xPWM_CHANNEL6" ],
-	[ "", "", "-------------", ],
-	[ "", "", "xPWM_CHANNEL7" ],
     [ "------------------------", "----------------","-------------", ],
 );  
 
@@ -224,7 +216,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xPWM Config", "COX", "NUC1xx"  ],
+    [ "xPWM Config", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","--------", ],
     [ "xPWM_ONE_SHOT_MODE", "Mandatory", "Y" ],
     [ "------------------------", "----------------","--------", ],
@@ -278,7 +270,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xPWM API", "COX", "NUC1xx"  ],
+    [ "xPWM API", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","--------", ],
     [ "xPWMInitConfigure", "Mandatory", "Y" ],
     [ "------------------------", "----------------","--------", ],

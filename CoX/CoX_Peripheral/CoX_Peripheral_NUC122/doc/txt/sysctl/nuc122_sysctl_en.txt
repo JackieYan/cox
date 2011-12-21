@@ -58,36 +58,32 @@
 //! .
 //! 
 //! <br />
-//! \subsection NUC122_API_Group_Reset_Control 2.2 SysCtl Peripharal Control APIs
+//! \subsection NUC122_API_Group_Peripharal_Control 2.2 SysCtl Peripharal Control APIs
+//! The SysCtl clock control are dealed with :
 //! - SysCtlCPUReset(),
 //! - SysCtlChipReset(),
 //! - SysCtlPeripheralDisable(),
 //! - SysCtlPeripheralEnable(),
 //! - SysCtlPeripheralReset(),
-//! - SysCtlPeripheralDisable2(),
-//! - SysCtlPeripheralEnable2(),
-//! - SysCtlPeripheralReset2(),
 //! - SysCtlResetSrcGet(),
 //! - SysCtlResetSrcClear().
 //! .
 //!
 //! <br />
 //! \subsection NUC122_API_Group_Power_Control 2.3 SysCtl power control
-//!
-//! - The SysCtl power control are dealed with : 
+//! 
+//! The SysCtl power control are dealed with : 
 //! - SysCtlPowerDownEnable(),
 //! - SysCtlPWRWUIntEnable(),
 //! - SysCtlPowerDownWaitCPUSet(),
-//! - SysCtlPLLPowerDownSet(),
 //! - SysCtlBODEnable(),
 //! - SysCtlBODVoltSelect(),
 //! - SysCtlBODLowPowerModeEnable(),
 //! - SysCtlLowVoltRstEnable(),
 //! - SysCtlBODRstEnable().
-//! - .
 //!
 //! <br />
-//! \section SYSCTL_Usage & Program Examples
+//! \section NUC122_SysCtl_Usage
 //! The following example shows how to use the SysCtl API to configure the
 //! system clock,enable the relative peripheral,put the processor into sleep
 //! mode,and then wake up by Extern Interrupt 0;
@@ -105,16 +101,14 @@
 //! //*****************************************************************************
 //! //
 //! // Enter Sleep Mode function.
-//!
 //! // This function will force the processor enter sleep mode.
-//!  
-//! // return None
 //! //
 //! //*****************************************************************************
 //! void PWRCtl_Standby(void)
 //! {
 //!     //
 //!     // Enter Puts the processor into deep-sleep mode.
+//!     //
 //!     SysCtlDeepSleep();
 //!    
 //! }
@@ -122,11 +116,7 @@
 //! //
 //! // brief Init uart to print.
 //! //
-//! // param None
-//! //
 //! // details uart config as (115200, 8 data bit, 1 stop bit , no partiy)
-//! //
-//! // return None.
 //! //
 //! //*****************************************************************************
 //! 
@@ -135,24 +125,19 @@
 //!     //
 //!     // Set system clock
 //!     //
-//!     SysCtlHClockSet(SYSCTL_SYSDIV_1 | SYSCTL_XTAL_12MHZ | SYSCTL_OSC_MAIN | SYSCTL_PLL_MAIN);
+//!     xSysCtlClockSet(50000000, xSYSCTL_OSC_MAIN | xSYSCTL_XTAL_12MHZ);
 //!
-//!	    XPinTypeUART(GPIO_PB0_U0RX,PB0);
-//!	    XPinTypeUART(GPIO_PB1_U0TX,PB1);
+//!     xSPinTypeUART(UART0RX,PB0);
+//!     xSPinTypeUART(UART0TX,PB1);
 //!
-//!	    xSysCtlPeripheralReset(xSYSCTL_PERIPH_UART0);
+//!     xSysCtlPeripheralReset(xSYSCTL_PERIPH_UART0);
 //!     xSysCtlPeripheralEnable(xSYSCTL_PERIPH_UART0);
-//!	    SysCtlPeripheralClockSourceSet(SYSCTL_PERIPH_UART_S_EXT12M);
+//!     xSysCtlPeripheralClockSourceSet(xSYSCTL_PERIPH_UART_S_EXT12M,1);
 //!
 //!
-//!	    xHWREG(UART_BASE + UART_FCR) |= 0x6;
-//!	    xHWREG(UART_BASE + UART_FCR) &= ~(0xF0);
-//!	    xHWREG(UART_BASE + UART_FCR) |= 0;
-//!
-//!	    xHWREG(UART_BASE + UART_LCR) = 3;
-//!	    xHWREG(UART_BASE + UART_BAUD) = 0x3F000066;
-//!
-//!	    SysCtlDelay(10000);
+//!     xUARTConfigSet(UART0_BASE,115200,xUART_CONFIG_WLEN_8 | xUART_CONFIG_STOP_1
+//!                                                          | xUART_CONFIG_PAR_NONE));
+//!     xSysCtlDelay(10000);
 //! }
 //! //*****************************************************************************
 //! //
@@ -168,10 +153,10 @@
 //!     uint8_t c;
 //!     c = ch;
 //!     while((xHWREG(UART_BASE + UART_FSR) & (0x400000))!=0x400000);
-//!	    //
-//!	    // Write this character to the transmit FIFO.
-//!	    //
-//!	    xHWREG(UART_BASE + UART_THR) = c;
+//!     //
+//!     // Write this character to the transmit FIFO.
+//!     //
+//!     xHWREG(UART_BASE + UART_THR) = c;
 //! }
 //! 
 //! //*****************************************************************************
@@ -184,11 +169,10 @@
 //! //*****************************************************************************
 //! void PWR_WKUP_Init(void)
 //! {	 
-//!    xIntEnable(INT_EINT1);
-//!    xIntPrioritySet(INT_EINT1, 1);
-//!    GPIODirModeSet(GPIO_PORTB_BASE, GPIO_PIN_15,GPIO_DIR_MODE_IN);
-//!    
-//!    GPIOPinIntEnable(GPIO_PORTB_BASE, GPIO_PIN_15,GPIO_FALLING_EDGE);
+//!     xIntEnable(INT_EINT1);
+//!     xIntPrioritySet(INT_EINT1, 1);
+//!     GPIODirModeSet(GPIO_PORTB_BASE, GPIO_PIN_15,GPIO_DIR_MODE_IN);
+//!     GPIOPinIntEnable(GPIO_PORTB_BASE, GPIO_PIN_15,GPIO_FALLING_EDGE);
 //! }
 //! //*****************************************************************************
 //! //
@@ -199,18 +183,18 @@
 //! //*****************************************************************************
 //! int main(void)
 //! {
-//!    //
-//!    //UART initialize
-//!    //          
-//!    TestIOInit();
-//!    PWR_WKUP_Init();
+//!     //
+//!     //UART initialize
+//!     //          
+//!     TestIOInit();
+//!     PWR_WKUP_Init();
 //!
-//!    while(1)
-//!    {
-//!       PWRCtl_Standby();
-//!       TestIOPut('O');
-//!       TestIOPut('K');	
-//!    }  
+//!     while(1)
+//!     {
+//!        PWRCtl_Standby();
+//!        TestIOPut('O');
+//!        TestIOPut('K');	
+//!     }  
 //! }
 //! \endcode
 //! \note 

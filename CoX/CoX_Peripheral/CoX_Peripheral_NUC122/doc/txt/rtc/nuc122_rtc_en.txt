@@ -67,7 +67,6 @@
 //! - RTCIntCallbackInit()
 //! - RTCIntEnable()
 //! - RTCIntDisable()
-//! - RTC_IRQHandler().
 //! .
 //!
 //! \n

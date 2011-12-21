@@ -101,7 +101,7 @@
 //! .
 //!
 //! <br />
-//! \subsection xPWM_API_Group_Config 2.1 2.1 PWM Configuration APIs
+//! \subsection xPWM_API_Group_Config 2.1 PWM Configuration APIs
 //! 
 //! The PWM clock prescale, CNR and divider are configured with :
 //! - xPWMInitConfigure() 
@@ -130,7 +130,6 @@
 //! - xPWMIntCallbackInit()
 //! - xPWMIntEnable()
 //! - xPWMIntDisable()
-//! - xPWMIntFlagClear()
 //! .
 //!
 //! <br />
@@ -142,7 +141,7 @@
 //!
 //! unsigned long ulBase = xPWMA_BASE;
 //! unsigned long ulChannel = xPWM_CHANNEL2;
-//! unsigned long ulConfig = xPWM_TOGGLE_MODE|xPWM_OUTPUT_INVERTER_DIS |xPWM_DEAD_ZONE_DIS;
+//! unsigned long ulConfig = xPWM_TOGGLE_MODE | xPWM_OUTPUT_INVERTER_DIS | xPWM_DEAD_ZONE_DIS;
 //!                                         
 //! //
 //! // Set invert, dead zone and mode.

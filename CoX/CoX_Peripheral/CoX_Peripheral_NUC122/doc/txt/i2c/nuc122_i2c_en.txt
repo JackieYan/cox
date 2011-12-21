@@ -55,7 +55,6 @@
 //!
 //! The I2C master init functions are:
 //! - I2CMasterInit()
-//! - I2CMasterSlaveAddrSet() 
 //! .  
 //! 
 //! The I2C slave init functions are: 
@@ -65,7 +64,7 @@
 //! .
 //! 
 //! <br />
-//! \subsection NUC122_I2C_API_Group_Transfer 2.2 xI2C Transfer APIs
+//! \subsection NUC122_I2C_API_Group_Transfer 2.2 I2C Transfer APIs
 //! 
 //! Get the i2c status
 //! - I2CStatusGet()

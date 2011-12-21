@@ -280,7 +280,7 @@ extern "C"
 
 //*****************************************************************************
 //
-//! \addtogroup xSysCtl_Peripheral_Src_Clk SysCtl Peripheral Source Clock
+//! \addtogroup xSysCtl_Peripheral_Src_Clk xSysCtl Peripheral Source Clock
 //! The following are values that can be passed to the
 //! xSysCtlPeripheralClockSourceSet()  API as the
 //! ulPeripheralsrc parameter.  
@@ -480,7 +480,7 @@ extern "C"
 
 //*****************************************************************************
 //
-//! \addtogroup xSysCtl_Peripheral_Short SysCtl Peripheral Short Name
+//! \addtogroup xSysCtl_Peripheral_Short xSysCtl Peripheral Short Name
 //! The following are values that can be passed to the
 //! xSysCtlPeripheralClockSourceSet2()  API as the
 //! ulPeripheral parameter.

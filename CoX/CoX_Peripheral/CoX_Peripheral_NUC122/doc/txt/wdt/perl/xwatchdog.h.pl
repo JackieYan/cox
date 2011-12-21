@@ -29,7 +29,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xWATCHDOG Function Type", "COX", "NUC1xx"  ],
+    [ "xWATCHDOG Function Type", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xWATCHDOG_INT_FUNCTION", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -81,9 +81,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "Clock Configuration", "COX", "NUC1xx"  ],
-    [ "------------------------", "----------------","------------------------", ],
-    [ "xWATCHDOG_S_INTSL", "Mandatory", "Y" ],
+    [ "Clock Configuration", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xWATCHDOG_S_EXTSL", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -131,7 +129,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "Time Reload Config", "COX", "NUC1xx"  ],
+    [ "Time Reload Config", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "Time Reload Value", "Mandatory", "xWDT_INTERVAL_2_4T" ],
     [ "", "","------------------------", ],
@@ -181,7 +179,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xWATCHDOG API", "COX", "NUC1xx"  ],
+    [ "xWATCHDOG API", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xWATCHDOGInit", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],

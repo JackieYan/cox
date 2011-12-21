@@ -29,13 +29,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "SysCtl Peripheral ID", "COX", "NUC1xx"  ],
-    [ "--------------------------", "----------------","--------------------------", ],
-    [ "xSYSCTL_PERIPH_ACMPn", "Non-Mandatory", "xSYSCTL_PERIPH_ACMP0" ],
-    [ "--------------------------", "----------------","--------------------------", ],
-    [ "xSYSCTL_PERIPH_ADCn", "Mandatory", "xSYSCTL_PERIPH_ADC0" ],
-    [ "--------------------------", "----------------","--------------------------", ],
-    [ "xSYSCTL_PERIPH_DMA", "Non-Mandatory", "Y" ],
+    [ "SysCtl Peripheral ID", "CoX", "NUC122"  ],
     [ "--------------------------", "----------------","--------------------------", ],
     [ "xSYSCTL_PERIPH_GPIOn", "Mandatory", "xSYSCTL_PERIPH_GPIOA" ],
     [ "", "","--------------------------", ],
@@ -45,11 +39,8 @@ $tb->load(
     [ "", "","--------------------------", ],
     [ "", "", "xSYSCTL_PERIPH_GPIOD" ],
     [ "", "","--------------------------", ],
-    [ "", "", "xSYSCTL_PERIPH_GPIOE" ],
     [ "--------------------------", "----------------","--------------------------", ],
     [ "xSYSCTL_PERIPH_I2Cn", "Non-Mandatory", "xSYSCTL_PERIPH_I2C0" ],
-    [ "", "","--------------------------", ],
-    [ "", "", "xSYSCTL_PERIPH_I2C1" ],
     [ "--------------------------", "----------------","--------------------------", ],
     [ "xSYSCTL_PERIPH_PWMn", "Non-Mandatory", "xSYSCTL_PERIPH_PWM0" ],
     [ "", "","--------------------------", ],
@@ -64,10 +55,6 @@ $tb->load(
     [ "xSYSCTL_PERIPH_SPIn", "Mandatory", "xSYSCTL_PERIPH_SSI0" ],
     [ "", "","--------------------------", ],
     [ "", "", "xSYSCTL_PERIPH_SPI1" ],
-    [ "", "","--------------------------", ],
-    [ "", "", "xSYSCTL_PERIPH_SPI2" ],
-    [ "", "","--------------------------", ],
-    [ "", "", "xSYSCTL_PERIPH_SPI3" ],
     [ "--------------------------", "----------------","--------------------------", ],
     [ "xSYSCTL_PERIPH_TIMERn", "Mandatory", "xSYSCTL_PERIPH_TIMER0" ],
     [ "", "","--------------------------", ],
@@ -80,8 +67,6 @@ $tb->load(
     [ "xSYSCTL_PERIPH_UARTn", "Mandatory", "xSYSCTL_PERIPH_UART0" ],
     [ "", "","--------------------------", ],
     [ "", "", "xSYSCTL_PERIPH_UART1" ],
-    [ "", "","--------------------------", ],
-    [ "", "", "xSYSCTL_PERIPH_UART2" ],
     [ "--------------------------", "----------------","--------------------------", ],
     [ "xSYSCTL_PERIPH_WDOG", "Mandatory", "Y" ],
     [ "--------------------------", "----------------","--------------------------", ],  
@@ -127,7 +112,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "SysCtl Clock Set Configs", "COX", "NUC1xx"  ],
+    [ "SysCtl Clock Set Configs", "CoX", "NUC122"  ],
     [ "--------------------------", "----------------","--------------------------", ],
     [ "xSYSCTL_OSC_MAIN", "Mandatory", "Y" ],
     [ "--------------------------", "----------------","--------------------------", ],
@@ -206,23 +191,15 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "Peripheral Source Clock Set", "COX", "NUC1xx"  ],
+    [ "Peripheral Source Clock Set", "CoX", "NUC122"  ],
     [ "---------------------------", "----------------","--------------------------", ],
     [ "Those are all Non-Mandatory\n parameter,the Mandatory\n is variable naming\nModuleName+n+SourceClock", "Non-Mandatory", "Y" ],
     [ "---------------------------", "----------------","--------------------------", ],
-    [ "xSYSCTL_WDT_EXTSL", "Non-Mandatory", "Y" ],
-    [ "--------------------------", "----------------","--------------------------", ],
 	[ "xSYSCTL_WDT_HCLK_2048", "Non-Mandatory", "Y" ],
     [ "--------------------------", "----------------","--------------------------", ],
 	[ "xSYSCTL_WDT_INTSL", "Non-Mandatory", "Y" ],
     [ "--------------------------", "----------------","--------------------------", ],
-	[ "xSYSCTL_ADC0_MAIN", "Non-Mandatory", "Y" ],
-    [ "--------------------------", "----------------","--------------------------", ],
-	[ "xSYSCTL_ADC0_PLL", "Non-Mandatory", "Y" ],
-    [ "--------------------------", "----------------","--------------------------", ],
 	[ "......", "Non-Mandatory", "Y" ],
-    [ "--------------------------", "----------------","--------------------------", ],
-	[ "xSYSCTL_PWMB_INT", "Non-Mandatory", "Y" ],
     [ "--------------------------", "----------------","--------------------------", ],
 
 );  
@@ -267,17 +244,11 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "Peripheral Short name", "COX", "NUC1xx"  ],
+    [ "Peripheral Short name", "CoX", "NUC122"  ],
     [ "---------------------------", "----------------","--------------------------", ],
-    [ "ADCn", "Non-Mandatory", "ADC0" ],
-    [ "---------------------------", "----------------","--------------------------", ],
-    [ "PWMn", "Non-Mandatory", "PWMA\nPWMB" ],
+    [ "PWMn", "Non-Mandatory", "PWMA" ],
     [ "--------------------------", "----------------","--------------------------", ],
-	[ "CANn", "Non-Mandatory", "CAN0" ],
-    [ "--------------------------", "----------------","--------------------------", ],
-	[ "UARTn", "Non-Mandatory", "UART0\nUART1\nUART2" ],
-    [ "--------------------------", "----------------","--------------------------", ],
-	[ "I2Sn", "Non-Mandatory", "I2S0" ],
+	[ "UARTn", "Non-Mandatory", "UART0\nUART1" ],
     [ "--------------------------", "----------------","--------------------------", ],
 	[ "WDTn", "Non-Mandatory", "WDT0" ],
     [ "--------------------------", "----------------","--------------------------", ],
@@ -287,16 +258,12 @@ $tb->load(
     [ "--------------------------", "----------------","--------------------------", ],
 	[ "SPIn", "Non-Mandatory", "N" ],
     [ "--------------------------", "----------------","--------------------------", ],
-	[ "SPIn", "Non-Mandatory", "N" ],
-    [ "--------------------------", "----------------","--------------------------", ],
-	[ "ACMPn", "Non-Mandatory", "N" ],
-    [ "--------------------------", "----------------","--------------------------", ],
 	[ "RTC", "Non-Mandatory", "N" ],
     [ "--------------------------", "----------------","--------------------------", ],
 	[ "GPIO", "Non-Mandatory", "N" ],
     [ "--------------------------", "----------------","--------------------------", ],
 	[ "", "","", ],
-	[ "Peripheral Clock source", "COX", "NUC1xx"  ],
+	[ "Peripheral Clock source", "CoX", "NUC122"  ],
 	[ "---------------------------", "----------------","--------------------------", ],
     [ "INT", "Mandatory", "Y" ],
     [ "---------------------------", "----------------","--------------------------", ],
@@ -357,7 +324,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xSysCtl API", "COX", "NUC1xx"  ],
+    [ "xSysCtl API", "CoX", "NUC122"  ],
     [ "--------------------------------", "----------------","--------", ],
     [ "xSysCtlPeripheralReset", "Mandatory", "Y" ],
     [ "--------------------------------", "----------------","--------", ],
@@ -464,12 +431,12 @@ $tb->load(
     
     # Line1 (Data)
     [
-    "COX Common & \n Mandatory", 
+    "CoX Common & \n Mandatory", 
     "This parameter is a\n".
     "mandatory.Mandatory\n".
 	"is the format of\n".
     "Variable naming.So it \n".
-	"should be: ADCn,\n".
+	"should be: \n".
 	"TIMERn or UARTn\n".
 	"n indicate the pin\n".
 	"number such as \n".
@@ -489,33 +456,23 @@ $tb->load(
     ["--------------------", "------------------------", "------------------------------"],  
     # Line4
     [
-        "NUC1xx",
-"    ADC0
-    PWMB
-    PWMA
-    FRQDIV
-    I2S0
+        "NUC122",
+"   PWMA
     TIMER0
     TIMER1
     TIMER2
     TIMER3
     UART0
     UART1
-    UART2
-    CAN0
     WDT0
 ",
-"MAIN PLL INT
-INT HCLK EXTSL MAIN
-INT HCLK EXTSL MAIN
+"INT HCLK EXTSL MAIN
 INT HCLK EXTSL MAIN
 INT HCLK PLL MAIN
 INT EXTTRG HCLK EXTSL MAIN
 INT EXTTRG HCLK EXTSL MAIN
 INT EXTTRG HCLK EXTSL MAIN
 INT EXTTRG HCLK EXTSL MAIN
-INT PLL MAIN
-INT PLL MAIN
 INT PLL MAIN
 INT PLL MAIN
 INTSL HCLK_2048 EXTSL

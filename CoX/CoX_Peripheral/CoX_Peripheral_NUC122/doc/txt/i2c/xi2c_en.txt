@@ -7,8 +7,8 @@
 //! I2C is two-wire, bi-directional serial bus to transfer data. One bus is SCL 
 //! which provide the clock pulse for each data bit transfer on the other SDA bus.
 //!
-//! I2c can be configure as master mode or slave mode. Master mode provide the 
-//! clock and start/stop signal. Arbitration exist between simultaneously transmitting
+//! I2c can be configured as master mode or slave mode.Master mode provide clock
+//! and start/stop signal. Arbitration exist between simultaneously transmitting
 //! masters.
 //!
 //! Programmable clocks allow versatile rate control, i2c supports multiple 
@@ -163,7 +163,6 @@
 //! - xI2CMasterIntEnable()
 //! - xI2CMasterIntDisable()
 //! - xI2CMasterIntFlagGet()
-//! - xI2CMasterIntFlagClear()
 //! - xI2CMasterHandler()
 //! .
 //! 
@@ -171,7 +170,6 @@
 //! - xI2CSlaveIntEnable()
 //! - xI2CSlaveIntDisable()
 //! - xI2CSlaveIntFlagGet()
-//! - xI2CSlaveIntFlagClear()
 //! - xI2CSlaveHandler()
 //! .
 //!

@@ -327,7 +327,7 @@
 //*****************************************************************************
 
 //
-//! PWM Timer 0 Clock Source Selection (PWM timer 0 for group A) mask
+//! PWM Timer 0 Clock Source Selection mask
 //
 #define PWM_CSR_CSR0_M          0x00000007
 
@@ -357,12 +357,12 @@
 #define PWM_CSR_CSR0_1          0x00000004
 
 //
-//! PWM Timer 0 Clock Source Selection (PWM timer 0 for group A) shift
+//! PWM Timer 0 Clock Source Selection shift
 //
 #define PWM_CSR_CSR0_S          0
 
 //
-//! PWM Timer 1 Clock Source Selection (PWM timer 1 for group A) mask
+//! PWM Timer 1 Clock Source Selection mask
 //
 #define PWM_CSR_CSR1_M          0x00000070
 

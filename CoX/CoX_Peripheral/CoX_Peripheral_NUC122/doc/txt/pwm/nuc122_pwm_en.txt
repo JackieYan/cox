@@ -76,7 +76,7 @@
 //! The PWM Interrupt are set with : 
 //! - PWMIntEnable()
 //! - PWMIntDisable()
-//! - PWMIntFlagClear() 
+//! - PWMIntFlagClear()
 //! .
 //!
 //! <br />
@@ -88,7 +88,7 @@
 //!
 //! unsigned long ulBase = PWMA_BASE;
 //! unsigned long ulChannel = PWM_CHANNEL2;
-//! unsigned long ulConfig = PWM_TOGGLE_MODE|PWM_OUTPUT_INVERTER_DIS |PWM_DEAD_ZONE_DIS;
+//! unsigned long ulConfig = PWM_TOGGLE_MODE | PWM_OUTPUT_INVERTER_DIS | PWM_DEAD_ZONE_DIS;
 //!                                         
 //! //
 //! // Set invert, dead zone and mode.

@@ -29,7 +29,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xI2C Interrupts", "COX", "NUC1xx"  ],
+    [ "xI2C Interrupts", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xI2C_INT_FUNCTION", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -77,7 +77,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xI2C Status Type", "COX", "NUC1xx"  ],
+    [ "xI2C Status Type", "CoX", "NUC122"  ],
     [ "----------------------------------------", "----------------","----------", ],
     [ "xI2C_I2STAT_BUS_ERROR", "Mandatory", "Y" ],
     [ "----------------------------------------", "----------------","----------", ],
@@ -174,7 +174,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xI2C Transfer Type", "COX", "NUC1xx"  ],
+    [ "xI2C Transfer Type", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xI2C_TRANSFER_POLLING", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -221,7 +221,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xI2C General Call", "COX", "NUC1xx"  ],
+    [ "xI2C General Call", "CoX", "NUC122"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xI2C_GENERAL_CALL_DIS", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -269,7 +269,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xI2C API", "COX", "NUC1xx"  ],
+    [ "xI2C API", "CoX", "NUC122"  ],
     [ "--------------------------", "----------------","------------------------", ],
     [ "xI2CIntCallbackInit", "Mandatory", "Y" ],
     [ "--------------------------", "----------------","------------------------", ],

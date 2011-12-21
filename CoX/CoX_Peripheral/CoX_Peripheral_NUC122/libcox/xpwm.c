@@ -83,7 +83,7 @@ PWMAIntHandler(void)
     unsigned long ulBase = PWMA_BASE;
     
     //
-    //! Clear the PWMA INT Flag
+    // Clear the PWMA INT Flag
     //        
     ulPWMStastus = xHWREG(ulBase + PWM_PIIR) & 0xF;
     xHWREG(ulBase + PWM_PIIR) = ulPWMStastus;
@@ -192,7 +192,7 @@ PWMClockGet(unsigned long ulBase, unsigned long ulChannel)
 //
 //! \brief Initialize and configure the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //! \param ulConfig is the configuration of PWM channel.
 //!
@@ -256,7 +256,7 @@ PWMInitConfigure(unsigned long ulBase, unsigned long ulChannel,
 //
 //! \brief Set the PWM frequency of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //! \param ulFrequency is the PWM frequency of PWM channel.
 //!
@@ -380,9 +380,9 @@ PWMFrequencySet(unsigned long ulBase, unsigned long ulChannel,
 //
 //! \brief Set the PWM frequency of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
-//! \param ulConfig is the configuration of PWM channel' frequency.
+//! \param ulConfig is the configuration of PWM channel frequency.
 //!
 //! This function is to set the PWM frequency of the PWM module.
 //!
@@ -623,7 +623,7 @@ PWMOutputEnable(unsigned long ulBase, unsigned long ulChannel)
 //
 //! \brief Disable the PWM output of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //!
 //! This function is to disable the PWM output of the PWM module.
@@ -653,7 +653,7 @@ PWMOutputDisable(unsigned long ulBase, unsigned long ulChannel)
 //
 //! \brief Start the PWM of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //!
 //! This function is to start the PWM of the PWM module.
@@ -683,7 +683,7 @@ PWMStart(unsigned long ulBase, unsigned long ulChannel)
 //
 //! \brief Stop the PWM of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //!
 //! This function is to stop the PWM of the PWM module.
@@ -713,7 +713,7 @@ PWMStop(unsigned long ulBase, unsigned long ulChannel)
 //
 //! \brief Enable the PWM interrupt of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //! \param ulIntType is the PWM channel interrupt type.
 //!
@@ -758,7 +758,7 @@ PWMIntEnable(unsigned long ulBase, unsigned long ulChannel,
 //
 //! \brief Disable the PWM interrupt of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //! \param ulIntType is the PWM channel interrupt type.
 //!
@@ -805,7 +805,7 @@ PWMIntDisable(unsigned long ulBase, unsigned long ulChannel,
 //
 //! \brief Get the PWM interrupt flag of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //! \param ulIntType is the PWM channel interrupt type.
 //!
@@ -852,7 +852,7 @@ PWMIntFlagGet(unsigned long ulBase, unsigned long ulChannel,
 //
 //! \brief Clear the PWM interrupt flag of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //! \param ulIntType is the PWM channel interrupt type.
 //!
@@ -899,7 +899,7 @@ PWMIntFlagClear(unsigned long ulBase, unsigned long ulChannel,
 //
 //! \brief Init interrupt callback for the PWM timer.
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param xtPortCallback is callback for the PWM timer.
 //!
 //! This function is to init interrupt callback for the PWM timer.
@@ -928,7 +928,7 @@ PWMIntCallbackInit(unsigned long ulBase, xtEventCallback xtPWMCallback)
 //
 //! \brief Enable the Capture of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //!
 //! This function is to Enable the Capture of the PWM module.
@@ -960,7 +960,7 @@ PWMCAPEnable(unsigned long ulBase, unsigned long ulChannel)
 //
 //! \brief Disable the Capture of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //!
 //! This function is to disable the Capture of the PWM module.
@@ -992,7 +992,7 @@ PWMCAPDisable(unsigned long ulBase, unsigned long ulChannel)
 //
 //! \brief Enable the Capture input of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //!
 //! This function is to enable the Capture input of the PWM module.
@@ -1022,7 +1022,7 @@ PWMCAPInputEnable(unsigned long ulBase, unsigned long ulChannel)
 //
 //! \brief Disable the Capture input of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //!
 //! This function is to disable the Capture input of the PWM module.
@@ -1052,7 +1052,7 @@ PWMCAPInputDisable(unsigned long ulBase, unsigned long ulChannel)
 //
 //! \brief Get the Rising Latched PWM counter of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //!
 //! This function is to Get the Rising Latched PWM counter of the PWM module.
@@ -1082,7 +1082,7 @@ PWMCAPRisingCounterGet(unsigned long ulBase, unsigned long ulChannel)
 //
 //! \brief Get the Falling Latched PWM counter of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //!
 //! This function is to Get the Falling Latched PWM counter of the PWM module.
@@ -1112,7 +1112,7 @@ PWMCAPFallingCounterGet(unsigned long ulBase, unsigned long ulChannel)
 //
 //! \brief Get the Falling Latched PWM counter of the PWM module. 
 //!
-//! \param ulBase is the base address of the PWM port.
+//! \param ulBase is the base address of the PWM.
 //! \param ulChannel is the PWM channel.
 //!
 //! This function is to Get the Falling Latched PWM counter of the PWM module.
