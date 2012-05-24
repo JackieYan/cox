@@ -131,8 +131,6 @@ tPeripheralTable;
 //*****************************************************************************
 static const tPeripheralTable g_pPeripherals[] =
 {
-    {xGPIO_PORTA_BASE, xSYSCTL_PERIPH_GPIOA, INT_GPIOA},
-    {xGPIO_PORTB_BASE, xSYSCTL_PERIPH_GPIOB, INT_GPIOB},
     {xWDT_BASE,        xSYSCTL_PERIPH_WDOG,  INT_WDT},
     {xUART0_BASE,      xSYSCTL_PERIPH_UART0, INT_UART0},
     {xTIMER0_BASE,     xSYSCTL_PERIPH_TIMER0, INT_TIMER0},
@@ -141,6 +139,8 @@ static const tPeripheralTable g_pPeripherals[] =
     {xI2C0_BASE,       xSYSCTL_PERIPH_I2C0, INT_I2C0},
     {xADC0_BASE,       xSYSCTL_PERIPH_ADC0, INT_ADC},
     {xACMP0_BASE,      xSYSCTL_PERIPH_ACMP0,INT_ACMP},
+    {xGPIO_PORTA_BASE, xSYSCTL_PERIPH_GPIOA, 0},
+    {xGPIO_PORTB_BASE, xSYSCTL_PERIPH_GPIOB, 0},
     {0,                0,                   0},
 };
 
@@ -360,17 +360,8 @@ xSysCtlPeripheralClockSourceSet(unsigned long ulPeripheralSrc,
             (ulPeripheralSrc==xSYSCTL_RTC_EXTSL) ||
             (ulPeripheralSrc==xSYSCTL_RTC_INTSL)       
            );
-    xASSERT((ulDivide <= 256) && (ulDivide >= 1));
+    xASSERT((ulDivide <= 32768) && (ulDivide >= 1));
 
-    for(ulTemp=0; ulTemp<7; ulTemp++)
-    {
-        if(ulDivide == (1 << ulTemp))
-            break;
-    }
-    if(ulDivide == 6)
-    {
-        ulTemp = 7;
-    }
     while(!SysCtlBackupReadyStateGet());
 
     SysCtlBackupDomainReset();
@@ -379,47 +370,83 @@ xSysCtlPeripheralClockSourceSet(unsigned long ulPeripheralSrc,
     //   
     if(ulPeripheralSrc == xSYSCTL_WDT0_EXTSL)
     {
-	    xHWREG(RTC_CR) |= RTC_CR_LSEEN; 
+        for(ulTemp=0; ulTemp<8; ulTemp++)
+        {
+            if(ulDivide == (1 << ulTemp))
+                break;
+        }
+        xHWREG(RTC_CR) |= RTC_CR_LSEEN; 
         xHWREG(SYSCLK_GCFGR) &= ~SYSCLK_GCFGR_WDTSRC_M;
         xHWREG(SYSCLK_GCFGR) |= SYSCTL_PERIPH_WDG_S_EXTSL;
         xHWREG(WDT_PR) = WDT_PR_PROTECT_DIS;
         xHWREG(WDT_MR1) &= ~WDT_MR1_WPSC_M;
-        xHWREG(WDT_MR1) |= (ulDivide << WDT_MR1_WPSC_S);
+        xHWREG(WDT_MR1) |= (ulTemp << WDT_MR1_WPSC_S);
         xHWREG(WDT_PR) = WDT_PR_PROTECT_EN;
     }
     else if(ulPeripheralSrc == xSYSCTL_WDT0_INTSL)
     {
+        for(ulTemp=0; ulTemp<8; ulTemp++)
+        {
+            if(ulDivide == (1 << ulTemp))
+                break;
+        }
 	    xHWREG(RTC_CR) |= RTC_CR_LSIEN; 
         xHWREG(SYSCLK_GCFGR) &= ~SYSCLK_GCFGR_WDTSRC_M;
         xHWREG(SYSCLK_GCFGR) |= 0x00000000;
         xHWREG(WDT_PR) = WDT_PR_PROTECT_DIS;
         xHWREG(WDT_MR1) &= ~WDT_MR1_WPSC_M;
-        xHWREG(WDT_MR1) |= (ulDivide << WDT_MR1_WPSC_S);
+        xHWREG(WDT_MR1) |= (ulTemp << WDT_MR1_WPSC_S);
         xHWREG(WDT_PR) = WDT_PR_PROTECT_EN;
     }
     else if(ulPeripheralSrc == xSYSCTL_RTC_EXTSL)
     {
-	    xHWREG(RTC_CR) |= RTC_CR_LSEEN; 
-	    xHWREG(RTC_CR) |= RTC_CR_RTCSRC_LSE;
+        for(ulTemp=0; ulTemp<16; ulTemp++)
+        {
+            if(ulDivide == (1 << ulTemp))
+                break;
+        }
+        xHWREG(RTC_CR) |= RTC_CR_LSEEN; 
+        xHWREG(RTC_CR) |= RTC_CR_RTCSRC_LSE;
         xHWREG(RTC_CR) &= ~RTC_CR_RPRE_M;
         xHWREG(RTC_CR) |= (ulDivide << RTC_CR_RPRE_S);
     }
     else if(ulPeripheralSrc == xSYSCTL_RTC_INTSL)
     {
-	    xHWREG(RTC_CR) |= RTC_CR_LSIEN; 
-	    xHWREG(RTC_CR) |= RTC_CR_RTCSRC_LSI;
+        for(ulTemp=0; ulTemp<16; ulTemp++)
+        {
+            if(ulDivide == (1 << ulTemp))
+                break;
+        }
+        xHWREG(RTC_CR) |= RTC_CR_LSIEN; 
+        xHWREG(RTC_CR) |= RTC_CR_RTCSRC_LSI;
         xHWREG(RTC_CR) &= ~RTC_CR_RPRE_M;
         xHWREG(RTC_CR) |= (ulDivide << RTC_CR_RPRE_S);
     }
     else if(ulPeripheralSrc == xSYSCTL_ADC0_HCLK)
     {
-        xHWREG(SYSCLK_GCFGR) &= ~SYSCLK_APBCFGR_ADCDIV_M;
-        xHWREG(SYSCLK_APBCFGR) |= ulTemp;
+        for(ulTemp=0; ulTemp<7; ulTemp++)
+        {
+            if(ulDivide == (1 << ulTemp))
+                break;
+        }
+        if(ulDivide == 6)
+        {
+            ulTemp = 7;
+        }
+        xHWREG(SYSCLK_APBCFGR) &= ~SYSCLK_APBCFGR_ADCDIV_M;
+        xHWREG(SYSCLK_APBCFGR) |= (ulTemp << SYSCLK_APBCFGR_ADCDIV_S);
     }
-    else
+    else if(ulPeripheralSrc == xSYSCTL_UART0_HCLK)
     {
-        xHWREG(SYSCLK_APBCFGR) &= ~SYSCLK_GCFGR_URPRE_M;
-        xHWREG(SYSCLK_GCFGR) |= ulTemp;
+        if(ulDivide == 1)
+        {
+            xHWREG(SYSCLK_GCFGR) &= ~SYSCLK_GCFGR_URPRE_M;
+        }
+        else
+        {
+            xHWREG(SYSCLK_GCFGR) &= ~SYSCLK_GCFGR_URPRE_M;
+            xHWREG(SYSCLK_GCFGR) |= SYSCLK_GCFGR_URPRE_2;
+        }
     }
     
 }
@@ -600,17 +627,17 @@ xSysCtlClockSet(unsigned long ulSysClk, unsigned long ulConfig)
             xHWREG(FLASH_CFCR) |= 0x03;
         }
         else if(ulSysClk > 24000000)
-		{
+        {
             xHWREG(FLASH_CFCR) |= 0x02;
-		}
-		else
-		{
+        }
+        else
+        {
             xHWREG(FLASH_CFCR) |= 0x01;
-		}
+        }
 
-		//
-		// System clock source is PLL
-		//
+        //
+        // System clock source is PLL
+        //
         ulTemp = xHWREG(SYSCLK_GCCR) & 0xFFFFFFF1;
         xHWREG(SYSCLK_GCCR) &= ulTemp; 
         //

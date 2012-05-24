@@ -29,7 +29,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER Mode", "CoX", "M051"  ],
+    [ "xTIMER Mode", "CoX", "HT32F125x"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_MODE_ONESHOT", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -85,7 +85,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER Interrupt", "CoX", "M051"  ],
+    [ "xTIMER Interrupt", "CoX", "HT32F125x"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_INT_MATCH", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -140,7 +140,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER Counter Pase Type", "CoX", "M051"  ],
+    [ "xTIMER Counter Pase Type", "CoX", "HT32F125x"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_COUNTER_RISING", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -186,7 +186,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER Capture Edge", "CoX", "M051"  ],
+    [ "xTIMER Capture Edge", "CoX", "HT32F125x"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_CAP_RISING", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -236,7 +236,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER Capture Mode", "CoX", "M051"  ],
+    [ "xTIMER Capture Mode", "CoX", "HT32F125x"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_CAP_MODE_CAP", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -283,7 +283,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER Count Direction", "CoX", "M051"  ],
+    [ "xTIMER Count Direction", "CoX", "HT32F125x"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_COUNT_UP", "Mandatory", "Y" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -331,7 +331,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER Count Channel", "CoX", "M051"  ],
+    [ "xTIMER Count Channel", "CoX", "HT32F125x"  ],
     [ "------------------------", "----------------","------------------------", ],
     [ "xTIMER_CHANNELn", "Mandatory", "xTIMER_CHANNEL0" ],
     [ "------------------------", "----------------","------------------------", ],
@@ -378,7 +378,7 @@ my $tb = Text::Table->new(
 # Fill Table Cotent
 $tb->load(
     # Line 0(Column Name)
-    [ "xTIMER API", "CoX", "M051"  ],
+    [ "xTIMER API", "CoX", "HT32F125x"  ],
     [ "------------------------------", "----------------","------------------", ],
     [ "xTimerInitConfig", "Mandatory", "Y" ],
     [ "------------------------------", "----------------","------------------", ],

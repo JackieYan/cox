@@ -487,7 +487,6 @@ extern "C"
 //! \addtogroup HT32F125x_WDT_Exported_APIs HT32F125x WDT API
 //! \brief HT32F125x WDT API Reference.
 //! @{
-//! @{
 //
 //*****************************************************************************
 
@@ -498,7 +497,7 @@ extern void WDTimerIntCallbackInit(xtEventCallback xtWDTCallback);
 extern void WDTimerFunctionEnable(unsigned long ulFunction);
 extern void WDTimerFunctionDisable(unsigned long ulFunction);
 extern void WDTimerDeltaSet(unsigned long ulConfig);
-
+extern void WDTimerPrescalerSet(unsigned long ulDivide);
 //*****************************************************************************
 //
 //! @}

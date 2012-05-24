@@ -2077,77 +2077,77 @@
 #define ADC_TSR_ADEXTIS_EXTI0   0x00000000
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin1 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI1   0x00000100
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin2 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI2   0x00000200
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin3 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI3   0x00000300
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin4 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI4   0x00000400
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin5 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI5   0x00000500
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin6 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI6   0x00000600
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin7 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI7   0x00000700
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin8 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI8   0x00000800
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin9 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI9   0x00000900
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin10 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI10  0x00000A00
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin11 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI11  0x00000B00
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin12 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI12  0x00000C00
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin13 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI13  0x00000D00
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin14 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI14  0x00000E00
 
 //
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
+//! A/D Converter Regular Conversion EXTI lin15 rising edge
 //
 #define ADC_TSR_ADEXTIS_EXTI15  0x00000F00
 
@@ -2169,22 +2169,22 @@
 //
 //! GPTM CH0 rising edge of GPTM Trigger Event selection 
 //
-#define ADC_TSR_GPTME_CH0       0x00100000
+#define ADC_TSR_GPTME_CH0       0x01000000
 
 //
 //! GPTM CH1 rising edge of GPTM Trigger Event selection 
 //
-#define ADC_TSR_GPTME_CH1       0x00200000
+#define ADC_TSR_GPTME_CH1       0x02000000
 
 //
 //! GPTM CH2 rising edge of GPTM Trigger Event selection 
 //
-#define ADC_TSR_GPTME_CH2       0x00300000
+#define ADC_TSR_GPTME_CH2       0x03000000
 
 //
 //! GPTM CH3 rising edge of GPTM Trigger Event selection 
 //
-#define ADC_TSR_GPTME_CH3       0x00400000
+#define ADC_TSR_GPTME_CH3       0x04000000
 
 //*****************************************************************************
 //
@@ -2269,123 +2269,6 @@
 //! ADC_IN7 is monitored
 //
 #define ADC_WCR_ADWCH_IN7       0x00000700
-
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI0   0x00000000
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI1   0x00000100
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI2   0x00000200
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI3   0x00000300
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI4   0x00000400
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI5   0x00000500
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI6   0x00000600
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI7   0x00000700
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI8   0x00000800
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI9   0x00000900
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI10  0x00000A00
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI11  0x00000B00
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI12  0x00000C00
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI13  0x00000D00
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI14  0x00000E00
-
-//
-//! A/D Converter Regular Conversion EXTI lin0 rising edge
-//
-#define ADC_TSR_ADEXTIS_EXTI15  0x00000F00
-
-//
-//! GPTM0 Trigger
-//
-#define ADC_TSR_GPTMS_TM0       0x00020000
-
-//
-//! GPTM1 Trigger
-//
-#define ADC_TSR_GPTMS_TM1       0x00030000
-
-//
-//! GPTM MTO rising edge of GPTM Trigger Event selection 
-//
-#define ADC_TSR_GPTME_MT0       0x00000000
-
-//
-//! GPTM CH0 rising edge of GPTM Trigger Event selection 
-//
-#define ADC_TSR_GPTME_CH0       0x00100000
-
-//
-//! GPTM CH1 rising edge of GPTM Trigger Event selection 
-//
-#define ADC_TSR_GPTME_CH1       0x00200000
-
-//
-//! GPTM CH2 rising edge of GPTM Trigger Event selection 
-//
-#define ADC_TSR_GPTME_CH2       0x00300000
-
-//
-//! GPTM CH3 rising edge of GPTM Trigger Event selection 
-//
-#define ADC_TSR_GPTME_CH3       0x00400000
-
 //*****************************************************************************
 //
 //! @}

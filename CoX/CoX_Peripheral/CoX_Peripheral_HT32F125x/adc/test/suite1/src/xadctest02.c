@@ -87,7 +87,7 @@ static void xadc001Setup( void )
     //
     // Enable ADC clock 
     //
-    SysCtlPeripheralEnable( SYSCTL_PERIPH_ADC);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC);
 }
 //*****************************************************************************
 //
@@ -104,7 +104,7 @@ unsigned long ADC0IntFucntion(void *pvCBData,
                                        unsigned long ulMsgParam,
                                        void *pvMsgData)
 {
-    ADCIntClear(ADC_BASE, ADC_INT_END_CYCLE);
+    ADCIntClear(ADC_BASE, ADC_INT_END_CONVERSION);
     TestEmitToken('T');
 	return 0;
 }
@@ -136,18 +136,15 @@ static void adcIntTest(void)
     //
     // A/D interrupt enable 
     //
-    ADCIntEnable(ADC_BASE, ADC_INT_END_CYCLE);
+    ADCIntEnable(ADC_BASE, ADC_INT_END_CONVERSION);
     xIntEnable(INT_ADC);
     xADCIntCallbackInit(ADC_BASE, ADC0IntFucntion);
-    //
-	// Software trigger enable
-	//
-    ADCProcessorTrigger(ADC_BASE);
+
     //
     // A/D configure 
     //
-
     ADCConfigure(ADC_BASE, ADC_OP_SINGLE, ADC_TRIGGER_PROCESSOR);
+
     ADCDataGet(ADC_BASE, &ulData);
 	TestIOPut(ulData);
     TestAssertQBreak("T", "xadc interrupt function error!", 0xFFFFFFFF);
@@ -182,8 +179,9 @@ static void xadc001TearDown( void )
 const tTestCase sTestXAdc003Register = {
     xadc001GetTest,
     xadc001Setup,
-    xadc001Execute,
-    xadc001TearDown
+    xadc001TearDown,
+    xadc001Execute
+
 };
 
 //

@@ -245,3 +245,31 @@ WDTimerFunctionDisable(unsigned long ulFunction)
     xHWREG(WDT_PR) = WDT_PR_PROTECT_EN;
 }
 
+//*****************************************************************************
+//
+//! \brief Set Watchdog Timer Prescaler. 
+//!
+//! \param ulDivide is the peripheral clock divide to be set.
+//!
+//! Set Watchdog Timer Prescaler.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void 
+WDTimerPrescalerSet(unsigned long ulDivide)
+{   
+    unsigned long ulTemp = 0;
+    xASSERT((ulDivide <= 128) && (ulDivide >= 1));
+    for(ulTemp=0; ulTemp<8; ulTemp++)
+    {
+        if(ulDivide == (1 << ulTemp))
+        break;
+    }
+    xHWREG(SYSCLK_GCFGR) &= ~SYSCLK_GCFGR_WDTSRC_M;
+    xHWREG(SYSCLK_GCFGR) |= SYSCTL_PERIPH_WDG_S_EXTSL;
+    xHWREG(WDT_PR) = WDT_PR_PROTECT_DIS;
+    xHWREG(WDT_MR1) &= ~WDT_MR1_WPSC_M;
+    xHWREG(WDT_MR1) |= (ulTemp << WDT_MR1_WPSC_S);
+    xHWREG(WDT_PR) = WDT_PR_PROTECT_EN;
+}

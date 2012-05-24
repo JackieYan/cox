@@ -676,6 +676,16 @@ extern void xSysCtlSleep(void);
 #define SYSCTL_PERIPH_TMR1      0x48028802
 
 //
+//! PWMA
+//
+#define SYSCTL_PERIPH_PWMA      0x48018801
+
+//
+//! PWMB
+//
+#define SYSCTL_PERIPH_PWMB      0x48028802
+
+//
 //! OPA0
 //
 #define SYSCTL_PERIPH_OPA0      0x50409601

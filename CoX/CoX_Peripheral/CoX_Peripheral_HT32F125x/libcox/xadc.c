@@ -416,7 +416,7 @@ ADCDataGet(unsigned long ulBase, unsigned long *pulBuffer)
     ulWrite = 0;
     for(j = 0; j < ulSeqLen; j++)
     {
-        while(!ADCIntStatus(ADC_BASE, ADC_INT_END_CONVERSION));
+        while(!ADCIntStatus(ADC_BASE, ADC_INT_END_CYCLE));
         pulBuffer[ulWrite++] = xHWREG(ulBase + ADC_DR0 + ulChannelNo[j]*4) 
                                                                 & ADC_DR0_ADD0_M;
     }
@@ -893,7 +893,7 @@ void ADCIntEnable(unsigned long ulBase, unsigned long ulIntFlags)
     //
     // Check the arguments
     //
-    xASSERT(ulBase == xADC0_BASE);
+    xASSERT(ulBase == ADC0_BASE);
     xASSERT((ulIntFlags & (~(ADC_INT_END_CONVERSION | ADC_INT_END_SUBGROUP | 
                              ADC_INT_END_CYCLE | ADC_INT_MONIU | ADC_INT_MONIL |
                              ADC_INT_OVERW))) == 0);
@@ -953,11 +953,7 @@ void ADCIntDisable(unsigned long ulBase, unsigned long ulIntFlags)
     //
     // Check the arguments
     //
-    xASSERT(ulBase == xADC0_BASE);
-    //
-    // Check the arguments
-    //
-    xASSERT(ulBase == xADC0_BASE);
+    xASSERT(ulBase == ADC0_BASE);
     xASSERT((ulIntFlags & (~(ADC_INT_END_CONVERSION | ADC_INT_END_SUBGROUP | 
                              ADC_INT_END_CYCLE | ADC_INT_MONIU | ADC_INT_MONIL |
                              ADC_INT_OVERW))) == 0);

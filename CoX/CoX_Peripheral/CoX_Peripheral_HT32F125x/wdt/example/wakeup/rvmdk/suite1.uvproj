@@ -501,6 +501,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\..\..\libcox\xhw_wdt.h</FilePath>
             </File>
+            <File>
+              <FileName>xwdt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\libcox\xwdt.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1017,6 +1022,11 @@
               <FileName>xhw_wdt.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\..\..\libcox\xhw_wdt.h</FilePath>
+            </File>
+            <File>
+              <FileName>xwdt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\libcox\xwdt.c</FilePath>
             </File>
           </Files>
         </Group>

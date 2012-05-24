@@ -220,7 +220,7 @@
 #define SYSCLK_LPCR             0x40088300
 
 //
-//! MCU Derug Control Register
+//! MCU Debug Control Register
 //
 #define SYSCLK_DBGCR            0x40088304
 
@@ -578,7 +578,7 @@
 //
 //! USART Clock Prescaler is CKUR/2
 //
-#define SYSCLK_GCFGR_URPRE_2    0x00200000
+#define SYSCLK_GCFGR_URPRE_2    0x00100000
 
 //
 //! Lower Power Mode Status Mask
@@ -1096,7 +1096,7 @@
 //
 //!  PLL used by System Clock
 //
-#define SYSCLK_CKST_PLLST       0x00070000
+#define SYSCLK_CKST_PLLST       0x00000100
 
 //
 //! High Speed External Clock Occupation Status Mask
@@ -1131,18 +1131,18 @@
 //
 //! HSI used by System Clock (CK_SYS) (SW = 0x03)
 //
-#define SYSCLK_CKST_HSIST_CKSYS 0x10000000
+#define SYSCLK_CKST_HSIST_CKSYS 0x01000000
 
 //
 //! HSI used by PLL
 //
-#define SYSCLK_CKST_HSIST_PLL   0x20000000
+#define SYSCLK_CKST_HSIST_PLL   0x02000000
 
 //
 //! HSI used by Clock Monitor
 //
 #define SYSCLK_CKST_HSIST_MONITOR                                             \
-                                0x40000000
+                                0x04000000
 
 //*****************************************************************************
 //
@@ -1152,7 +1152,7 @@
 //*****************************************************************************
 
 //
-//! Backup domain accessible by other power domains
+//! Backup domain Isolation Control
 //
 #define SYSCLK_LPCR_BKISO_EN    0x00000001
 
@@ -1259,7 +1259,7 @@
 //! @{
 //
 //*****************************************************************************
- 
+
 //
 //! I2C Reset.
 //
@@ -1275,7 +1275,7 @@
 //
 #define RSTCU_APBPRSTR0_UART0RST                                               \
                                 0x00000100
-
+                                
 //
 //! Alternate Function I/O Reset.
 //
@@ -1297,6 +1297,7 @@
 //
 #define RSTCU_APBPRSTR0_GPIOBRST                                              \
                                 0x00020000
+
 //*****************************************************************************
 //
 //! @}
@@ -1309,7 +1310,7 @@
 //! @{
 //
 //*****************************************************************************
- 
+
 //
 //! Watchdog Timer Reset.
 //
@@ -1323,8 +1324,7 @@
 //
 //! Timer1 Reset.
 //
-#define RSTCU_APBPRSTR1_TIM1RST                                               \
-                                0x00000200
+#define RSTCU_APBPRSTR1_TIM1RST 0x00000200
 
 //
 //! Comparator/OPA 0 Controller Reset.

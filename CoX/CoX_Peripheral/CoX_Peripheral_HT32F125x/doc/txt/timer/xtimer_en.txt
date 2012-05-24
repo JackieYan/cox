@@ -70,10 +70,8 @@
 //! <h1>Contents</h1>
 //! - \ref CoX_TIMER_How_Define
 //! - \ref xTIMER_API_Group
-//!   - \ref xTIMER_API_Mode_Config
+//!   - \ref xTIMER_API_Config
 //!   - \ref xTIMER_API_Start_Stop
-//!   - \ref xTIMER_API_Event_Counting
-//!   - \ref xTIMER_API_Capture
 //!   - \ref xTIMER_API_Value_Set
 //!   - \ref xTIMER_API_Interrupt
 //!   .
@@ -94,14 +92,6 @@
 //!   - Timer start
 //!   - Tiemr stop
 //!   .
-//! - Event counting set
-//!   - Rising edge count
-//!   - Falling edge count
-//!   .
-//! - Capture set
-//!   - Capture reset 
-//!   - Input capture
-//!   .
 //! - Values set and get
 //!   - Prescale value set and get
 //!   - Timer value set and get
@@ -114,17 +104,16 @@
 //! \section xTIMER_API_Group 2. xTiemr API Groups
 //! 
 //! The CoX TIMER API is broken into six groups of functions: 
-//! - those that deal with configuring the Mode configure, 
+//! - those that deal with configuration, 
 //! - those that deal with Timer Start-Stop, 
-//! - those that deal with Event counting set,
 //! - those that deal with values set and get,
 //! - those that deal with interrupt operation
 //! .
 //!
 //! <br />
-//! \subsection xTIMER_API_Mode_Config 2.1 xTIMER API Mode Config
+//! \subsection xTIMER_API_Config 2.1 xTIMER API Config
 //! 
-//! The TIMER Mode are configured with:
+//! The TIMER are configured with:
 //! - xTimerInitConfig() 
 //! .
 //!
@@ -135,25 +124,9 @@
 //! - xTimerStart()
 //! - xTimerStop()
 //! .
-//! 
-//! <br />
-//! \subsection xTIMER_API_Event_Counting 2.3 xTIMER API Event Counting
-//! 
-//! The TIMER event counting are handled with:
-//! - xTimerCounterEnable()
-//! - xTimerCounterDisable()
-//! .
-//! 
-//! <br />
-//! \subsection xTIMER_API_Capture 2.4 xTIMER API Capture
-//! 
-//! The capture function are handled with:
-//! - xTimerCaptureModeSet()
-//! - xTIMERPinWrite()
-//! .
 //!
 //! <br />
-//! \subsection xTIMER_API_Value_Set 2.5 xTIMER API Value Set
+//! \subsection xTIMER_API_Value_Set 2.3 xTIMER API Value Set
 //! The value set function are configured with:
 //! - xTimerPrescaleSet()
 //! - xTimerPrescaleGet()
@@ -163,7 +136,7 @@
 //! .
 //!
 //! <br />
-//! \subsection xTIMER_API_Interrupt 2.6 xTIMER API Interrupt
+//! \subsection xTIMER_API_Interrupt 2.4 xTIMER API Interrupt
 //! The Interrupt are handled with:
 //! - xTimerIntCallbackInit()
 //! - xTimerIntEnable()
