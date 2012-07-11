@@ -118,6 +118,7 @@ TIM1CCIntHandler(void)
     }
 }
 
+#if (STM32F1xx_DEVICE == STM32F10X_XL)
 //*****************************************************************************
 //
 //! \brief The PWMB default IRQ, declared in start up code. 
@@ -153,6 +154,7 @@ TIM8CCIntHandler(void)
         }
     }
 }
+#endif
 
 //*****************************************************************************
 //
@@ -298,6 +300,7 @@ TIM5IntHandler(void)
     }
 }
 
+#if (STM32F1xx_DEVICE == STM32F10X_XL)
 //*****************************************************************************
 //
 //! \brief The PWMG default IRQ, declared in start up code. 
@@ -333,7 +336,9 @@ TIM1BRKTIM9IntHandler(void)
         }
     }
 }
+#endif
 
+#if (STM32F1xx_DEVICE == STM32F10X_XL)
 //*****************************************************************************
 //
 //! \brief The PWMH default IRQ, declared in start up code. 
@@ -369,7 +374,9 @@ TIM8BRKTIM12IntHandler(void)
         }
     }
 }
+#endif
 
+#if (STM32F1xx_DEVICE == STM32F10X_XL)
 //*****************************************************************************
 //
 //! \brief The PWMI default IRQ, declared in start up code. 
@@ -405,7 +412,9 @@ TIM1UPTIM10IntHandler(void)
         }
     }
 }
+#endif
 
+#if (STM32F1xx_DEVICE == STM32F10X_XL)
 //*****************************************************************************
 //
 //! \brief The PWMJ default IRQ, declared in start up code. 
@@ -441,7 +450,9 @@ TIM1TRGCOMTIM11IntHandler(void)
         }
     }
 }
+#endif
 
+#if (STM32F1xx_DEVICE == STM32F10X_XL)
 //*****************************************************************************
 //
 //! \brief The PWMK default IRQ, declared in start up code. 
@@ -477,7 +488,9 @@ TIM8UPTIM13IntHandler(void)
         }
     }
 }
+#endif
 
+#if (STM32F1xx_DEVICE == STM32F10X_XL)
 //*****************************************************************************
 //
 //! \brief The PWML default IRQ, declared in start up code. 
@@ -513,6 +526,7 @@ TIM8TRGCOMTIM14IntHandler(void)
         }
     }
 }
+#endif
 //*****************************************************************************
 //
 //! \brief Initialize and configure the PWM module. 
