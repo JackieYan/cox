@@ -244,74 +244,6 @@ void EXTI1510IntHandler(void)
 
 //*****************************************************************************
 //
-//! \brief Get the GPIO Peripheral Id from a short Pin.
-//!
-//! \param eShortPin is the base address of the GPIO port
-//! 
-//! \return GPIO port code which is used by \ref xSysCtlPeripheralEnable,
-//! \ref xSysCtlPeripheralDisable, \ref xSysCtlPeripheralReset.
-//
-//*****************************************************************************
-unsigned long 
-GPIOPinToPeripheralId(unsigned long ulPort, unsigned long ulPin)
-{
-        
-    //
-    // Check the arguments.
-    //
-    xASSERT(GPIOBaseValid(ulPort));
-
-    return ulPort;
-}
-
-//*****************************************************************************
-//
-//! \brief Get the GPIO port from a short Pin.
-//!
-//! \param eShortPin is the base address of the GPIO port
-//!
-//! \note None.
-//! 
-//! \return GPIO port address which is used by GPIO API.
-//
-//*****************************************************************************
-unsigned long 
-GPIOPinToPort(unsigned long ulPort, unsigned long ulPin)
-{
-        
-    //
-    // Check the arguments.
-    //
-    xASSERT(GPIOBaseValid(ulPort));
-
-    return ulPort;
-}
-
-//*****************************************************************************
-//
-//! \brief Get the GPIO pin number from a short Pin.
-//!
-//! \param eShortPin is the base address of the GPIO port
-//!
-//! \note None.
-//! 
-//! \return GPIO pin number which is used by GPIO API.
-//
-//*****************************************************************************
-unsigned long 
-GPIOPinToPin(unsigned long ulPort, unsigned long ulPin)
-{
-        
-    //
-    // Check the arguments.
-    //
-    xASSERT(GPIOBaseValid(ulPort));
-
-    return ulPin;
-}
-
-//*****************************************************************************
-//
 //! \brief Sets the direction and pad configuration of the specified pin.
 //!
 //! \param ulPort is the base address of the GPIO port
@@ -372,16 +304,16 @@ GPIODirModeSet(unsigned long ulPort, unsigned long ulBit,
     //
     if(ulBit < 8)
     {
-        xHWREG(ulPort + GPIO_CRL) = (xHWREG(ulPort + GPIO_CRL) &               \
-        (~((GPIO_CRL_MODE0_M | GPIO_CRL_CNF0_M) << (ulBit * 4))));
+        xHWREG(ulPort + GPIO_CRL) &=                
+        (~((GPIO_CRL_MODE0_M | GPIO_CRL_CNF0_M) << (ulBit * 4)));
     
         xHWREG(ulPort + GPIO_CRL) = (xHWREG(ulPort + GPIO_CRL) |               \
         (((ulPinSpeed | ulPinType)) << (ulBit * 4)));  
     }
     else
     {
-        xHWREG(ulPort + GPIO_CRH) = (xHWREG(ulPort + GPIO_CRH) &               \
-        (~((GPIO_CRH_MODE8_M | GPIO_CRH_CNF8_M) << ((ulBit -8) * 4))));
+        xHWREG(ulPort + GPIO_CRH) &=                
+        (~((GPIO_CRH_MODE8_M | GPIO_CRH_CNF8_M) << ((ulBit -8) * 4)));
     
         xHWREG(ulPort + GPIO_CRH) = (xHWREG(ulPort + GPIO_CRH) |               \
         (((ulPinSpeed | ulPinType)) << ((ulBit -8) * 4)));
@@ -929,26 +861,52 @@ GPIOPinLockConfig(unsigned long ulPort, unsigned long ulPins)
 //
 //*****************************************************************************
 void
-GPIOPinConfigure(unsigned long ulPinConfig)
+GPIOPinConfigure(unsigned long ulPort, unsigned long ulPins, 
+                 unsigned long ulPinConfig)
 {
-    unsigned long ulBase, ulShift;
-
+    unsigned long ulBase, ulShift, ulInout;
+    int i;
     //
     // Check the argument.
     //
-    xASSERT(((ulPinConfig >> 28) & 0xf) <= 2 );
+    xASSERT(((ulPinConfig >> 28) & 0x1) <= 2 );
 
     //
     // Extract the base address index from the input value.
     //
 
-    ulBase = g_pulRemapRegs[(ulPinConfig >> 28) & 0xf];
+    ulBase = g_pulRemapRegs[(ulPinConfig >> 28) & 0x1];
 
 
     //
     // Extract the shift from the input value.
     //
     ulShift = (ulPinConfig ) & 0x0FFFFFFF;
+	
+    ulInout = (ulPinConfig >> 29) & 0x07;
+	
+    for(i=0; i<16; i++)
+    {
+        if((ulPins >> i) == 1)
+                break;
+    }
+    
+    if(ulInout == 0)
+    {
+        GPIODirModeSet(ulPort, i, GPIO_TYPE_IN_ANALOG, GPIO_IN_SPEED_FIXED);
+    }
+    else if(ulInout == 1)
+    {
+        GPIODirModeSet(ulPort, i, GPIO_TYPE_IN_FLOATING, GPIO_IN_SPEED_FIXED);
+    }
+    else if(ulInout == 3)
+    {
+        GPIODirModeSet(ulPort, i, GPIO_TYPE_AFOUT_STD, GPIO_OUT_SPEED_50M);
+    }
+    else if(ulInout == 4)
+    {
+        GPIODirModeSet(ulPort, i, GPIO_TYPE_AFOUT_OD, GPIO_OUT_SPEED_50M);
+    }
 
     //
     // Write the requested pin muxing value for this GPIO pin.

@@ -313,8 +313,8 @@ TIM5IntHandler(void)
 //! \return None.
 //
 //*****************************************************************************
-void 
-TIM1BRKIntHandler(void)
+void
+TIM1BRKTIM9IntHandler(void)
 {
     unsigned long ulPWMStastus;
     unsigned long ulBase = xPWMG_BASE;
@@ -349,8 +349,8 @@ TIM1BRKIntHandler(void)
 //! \return None.
 //
 //*****************************************************************************
-void 
-TIM8BRKIntHandler(void)
+void
+TIM8BRKTIM12IntHandler(void)
 {
     unsigned long ulPWMStastus;
     unsigned long ulBase = xPWMH_BASE;
@@ -385,8 +385,8 @@ TIM8BRKIntHandler(void)
 //! \return None.
 //
 //*****************************************************************************
-void 
-TIM1UPIntHandler(void)
+void
+TIM1UPTIM10IntHandler(void)
 {
     unsigned long ulPWMStastus;
     unsigned long ulBase = xPWMI_BASE;
@@ -421,8 +421,8 @@ TIM1UPIntHandler(void)
 //! \return None.
 //
 //*****************************************************************************
-void 
-TIM1TRGCOMIntHandler(void)
+void
+TIM1TRGCOMTIM11IntHandler(void)
 {
     unsigned long ulPWMStastus;
     unsigned long ulBase = xPWMJ_BASE;
@@ -457,8 +457,8 @@ TIM1TRGCOMIntHandler(void)
 //! \return None.
 //
 //*****************************************************************************
-void 
-TIM8UPIntHandler(void)
+void
+TIM8UPTIM13IntHandler(void)
 {
     unsigned long ulPWMStastus;
     unsigned long ulBase = xPWMK_BASE;
@@ -493,8 +493,8 @@ TIM8UPIntHandler(void)
 //! \return None.
 //
 //*****************************************************************************
-void 
-TIM8TRGCOMIntHandler(void)
+void
+TIM8TRGCOMTIM14IntHandler(void)
 {
     unsigned long ulPWMStastus;
     unsigned long ulBase = xPWML_BASE;

@@ -1722,7 +1722,7 @@ extern void I2CSlaveInit(unsigned long ulBase, unsigned long ulAddrConfig,
 extern void I2CEnable(unsigned long ulBase);
 extern void I2CDisable(unsigned long ulBase);
 extern void I2CMasterEnable(unsigned long ulBase);
-extern void I2CMasterEnable(unsigned long ulBase);
+extern void I2CMasterDisable(unsigned long ulBase);
 extern void I2CIntEnable(unsigned long ulBase, unsigned long ulIntType);
 extern void I2CIntDisable(unsigned long ulBase, unsigned long ulIntType);
 extern void I2CDMAEnable(unsigned long ulBase, unsigned long ulDMALast);

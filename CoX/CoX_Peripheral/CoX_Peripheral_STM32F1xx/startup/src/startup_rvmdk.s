@@ -113,9 +113,9 @@ __Vectors       DCD     __initial_sp                ; Top of Stack
                 DCD     CAN1RX1IntHandler           ; 21 CAN1 RX1 interrupt
                 DCD     CAN1SCEIntHandler           ; 22 CAN1 SCE interrupt 
                 DCD     EXTI95IntHandler            ; 23 EXTI Line[9:5] interrupts 
-                DCD     TIM1BRKIntHandler           ; 24 TIM1 Break interrupt
-                DCD     TIM1UPIntHandler            ; 25 TIM1 Update interrupt
-                DCD     TIM1TRGCOMIntHandler        ; 26 TIM1 Trigger and Commutation
+                DCD     TIM1BRKTIM9IntHandler       ; 24 TIM1 Break and IIM9 global interrupt
+                DCD     TIM1UPTIM10IntHandler       ; 25 TIM1 Update and TIM10 global interrupt
+                DCD     TIM1TRGCOMTIM11IntHandler   ; 26 TIM1 Trigger and Commutation and TIM11 global interrupt
                 DCD     TIM1CCIntHandler            ; 27 TIM1 Capture Compare interrupt
                 DCD     TIM2IntHandler              ; 28 TIM2 global interrupt
                 DCD     TIM3IntHandler              ; 29 TIM3 global interrupt
@@ -132,9 +132,9 @@ __Vectors       DCD     __initial_sp                ; Top of Stack
                 DCD     EXTI1510IntHandler          ; 40 EXTI Line[15:10] interrupts
                 DCD     RTCAlarmIntHandler          ; 41 RTC alarm through EXTI line
                 DCD     OTGFSWKUPIntHandler         ; 42 USB On-The-Go FS Wakeup
-                DCD     TIM8BRKIntHandler           ; 43 TIM8 Break interrupt
-                DCD     TIM8UPIntHandler            ; 44 TIM8 Update interrupt
-                DCD     TIM8TRGCOMIntHandler        ; 45 TIM8 Trigger and Commutation
+                DCD     TIM8BRKTIM12IntHandler      ; 43 TIM8 Break and TIM12 global interrupt
+                DCD     TIM8UPTIM13IntHandler       ; 44 TIM8 Update interrupt and TIM13 global interrupt
+                DCD     TIM8TRGCOMTIM14IntHandler   ; 45 TIM8 Trigger and Commutation and TIM14 global interrupt
                 DCD     TIM8CCIntHandler            ; 46 TIM8 Capture Compare interrupt
                 DCD     ADC3IntHandler              ; 47 ADC3 global interrupt
                 DCD     FSMCIntHandler              ; 48 FSMC global interrupt
@@ -247,9 +247,9 @@ DefaultIntHandler PROC
                 EXPORT CAN1RX1IntHandler         [WEAK]
                 EXPORT CAN1SCEIntHandler         [WEAK]
                 EXPORT EXTI95IntHandler          [WEAK]
-                EXPORT TIM1BRKIntHandler         [WEAK]
-                EXPORT TIM1UPIntHandler          [WEAK]
-                EXPORT TIM1TRGCOMIntHandler      [WEAK]
+                EXPORT TIM1BRKTIM9IntHandler     [WEAK]
+                EXPORT TIM1UPTIM10IntHandler     [WEAK]
+                EXPORT TIM1TRGCOMTIM11IntHandler [WEAK]
                 EXPORT TIM1CCIntHandler          [WEAK]
                 EXPORT TIM2IntHandler            [WEAK]
                 EXPORT TIM3IntHandler            [WEAK]
@@ -266,9 +266,9 @@ DefaultIntHandler PROC
                 EXPORT EXTI1510IntHandler        [WEAK]
                 EXPORT RTCAlarmIntHandler        [WEAK]
                 EXPORT OTGFSWKUPIntHandler       [WEAK]
-                EXPORT TIM8BRKIntHandler         [WEAK]
-                EXPORT TIM8UPIntHandler          [WEAK]
-                EXPORT TIM8TRGCOMIntHandler      [WEAK]
+                EXPORT TIM8BRKTIM12IntHandler    [WEAK]
+                EXPORT TIM8UPTIM13IntHandler     [WEAK]
+                EXPORT TIM8TRGCOMTIM14IntHandler [WEAK]
                 EXPORT TIM8CCIntHandler          [WEAK]
                 EXPORT ADC3IntHandler            [WEAK]
                 EXPORT FSMCIntHandler            [WEAK]
@@ -316,9 +316,9 @@ CAN1RX0IntHandler
 CAN1RX1IntHandler
 CAN1SCEIntHandler
 EXTI95IntHandler
-TIM1BRKIntHandler
-TIM1UPIntHandler
-TIM1TRGCOMIntHandler
+TIM1BRKTIM9IntHandler
+TIM1UPTIM10IntHandler
+TIM1TRGCOMTIM11IntHandler
 TIM1CCIntHandler
 TIM2IntHandler
 TIM3IntHandler
@@ -335,9 +335,9 @@ USART3IntHandler
 EXTI1510IntHandler
 RTCAlarmIntHandler
 OTGFSWKUPIntHandler
-TIM8BRKIntHandler
-TIM8UPIntHandler
-TIM8TRGCOMIntHandler
+TIM8BRKTIM12IntHandler
+TIM8UPTIM13IntHandler
+TIM8TRGCOMTIM14IntHandler
 TIM8CCIntHandler
 ADC3IntHandler
 FSMCIntHandler

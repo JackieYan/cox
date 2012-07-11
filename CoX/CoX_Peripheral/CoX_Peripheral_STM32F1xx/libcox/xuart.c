@@ -105,6 +105,11 @@ USART1IntHandler(void)
     unsigned long ulUART1IntStatus;
 
     ulUART1IntStatus = xHWREG(USART1_BASE + USART_SR);
+
+    if(ulUART1IntStatus & USART_SR_TXE)
+    {
+        xHWREG(USART1_BASE + USART_DR) = 0x00;
+    }
     //
     // Clear Interrupt Flag
     //
@@ -1655,8 +1660,8 @@ UARTModemControlSet(unsigned long ulBase, unsigned long ulControl)
     // Check the arguments.
     //
     xASSERT((ulBase == USART1_BASE) || (ulBase == USART2_BASE) || (ulBase == USART3_BASE));
-    xASSERT((ulMode == UART_MODEM_RTS) || (ulMode == UART_MODEM_CTS) || 
-            (ulMode == (UART_MODEM_RTS | UART_MODEM_CTS)));
+    xASSERT((ulControl == UART_MODEM_RTS) || (ulControl == UART_MODEM_CTS) || 
+            (ulControl == (UART_MODEM_RTS | UART_MODEM_CTS)));
     //
     // Set the USART's modem mode.
     //
@@ -1683,8 +1688,8 @@ UARTModemControlClear(unsigned long ulBase, unsigned long ulControl)
     // Check the arguments.
     //
     xASSERT((ulBase == USART1_BASE) || (ulBase == USART2_BASE) || (ulBase == USART3_BASE));
-    xASSERT((ulMode == UART_MODEM_RTS) || (ulMode == UART_MODEM_CTS) || 
-            (ulMode == (UART_MODEM_RTS | UART_MODEM_CTS)));
+    xASSERT((ulControl == UART_MODEM_RTS) || (ulControl == UART_MODEM_CTS) || 
+            (ulControl == (UART_MODEM_RTS | UART_MODEM_CTS)));
     //
     // Clear the USART's modem mode.
     //
