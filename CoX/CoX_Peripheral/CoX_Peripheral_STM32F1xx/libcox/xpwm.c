@@ -53,7 +53,7 @@
 // Some arrays are PWM Callback function points
 //
 //*****************************************************************************
-static xtEventCallback g_pfnPWMHandlerCallbacks[6]={0};
+static xtEventCallback g_pfnPWMHandlerCallbacks[12]={0};
 
 //*****************************************************************************
 //
@@ -294,6 +294,222 @@ TIM5IntHandler(void)
         if(ulPWMStastus != 0)
         {
             g_pfnPWMHandlerCallbacks[5](0, PWM_EVENT_PWM, ulPWMStastus, 0);
+        }
+    }
+}
+
+//*****************************************************************************
+//
+//! \brief The PWMG default IRQ, declared in start up code. 
+//!
+//! \param None.
+//!
+//! This function is to give a default PWMG IRQ service.
+//!
+//! \note The Callback function have two effective parameters,One is indicate
+//! is a PWM or Capture interrupt.And the other one show which channel have a 
+//! interrupt.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void 
+TIM1BRKIntHandler(void)
+{
+    unsigned long ulPWMStastus;
+    unsigned long ulBase = xPWMG_BASE;
+    
+    //
+    // Clear the PWMA INT Flag
+    //        
+    ulPWMStastus = xHWREG(ulBase + TIMER_SR) & 0x1E;
+    xHWREG(ulBase + TIMER_SR) &= ~ulPWMStastus;
+    
+    if (g_pfnPWMHandlerCallbacks[6] != 0)        
+    {
+        if(ulPWMStastus != 0)
+        {
+            g_pfnPWMHandlerCallbacks[6](0, PWM_EVENT_PWM, ulPWMStastus, 0);
+        }
+    }
+}
+
+//*****************************************************************************
+//
+//! \brief The PWMH default IRQ, declared in start up code. 
+//!
+//! \param None.
+//!
+//! This function is to give a default PWMH IRQ service.
+//!
+//! \note The Callback function have two effective parameters,One is indicate
+//! is a PWM or Capture interrupt.And the other one show which channel have a 
+//! interrupt.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void 
+TIM8BRKIntHandler(void)
+{
+    unsigned long ulPWMStastus;
+    unsigned long ulBase = xPWMH_BASE;
+    
+    //
+    // Clear the PWMA INT Flag
+    //        
+    ulPWMStastus = xHWREG(ulBase + TIMER_SR) & 0x1E;
+    xHWREG(ulBase + TIMER_SR) &= ~ulPWMStastus;
+    
+    if (g_pfnPWMHandlerCallbacks[7] != 0)        
+    {
+        if(ulPWMStastus != 0)
+        {
+            g_pfnPWMHandlerCallbacks[7](0, PWM_EVENT_PWM, ulPWMStastus, 0);
+        }
+    }
+}
+
+//*****************************************************************************
+//
+//! \brief The PWMI default IRQ, declared in start up code. 
+//!
+//! \param None.
+//!
+//! This function is to give a default PWMI IRQ service.
+//!
+//! \note The Callback function have two effective parameters,One is indicate
+//! is a PWM or Capture interrupt.And the other one show which channel have a 
+//! interrupt.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void 
+TIM1UPIntHandler(void)
+{
+    unsigned long ulPWMStastus;
+    unsigned long ulBase = xPWMI_BASE;
+    
+    //
+    // Clear the PWMA INT Flag
+    //        
+    ulPWMStastus = xHWREG(ulBase + TIMER_SR) & 0x1E;
+    xHWREG(ulBase + TIMER_SR) &= ~ulPWMStastus;
+    
+    if (g_pfnPWMHandlerCallbacks[8] != 0)        
+    {
+        if(ulPWMStastus != 0)
+        {
+            g_pfnPWMHandlerCallbacks[8](0, PWM_EVENT_PWM, ulPWMStastus, 0);
+        }
+    }
+}
+
+//*****************************************************************************
+//
+//! \brief The PWMJ default IRQ, declared in start up code. 
+//!
+//! \param None.
+//!
+//! This function is to give a default PWMJ IRQ service.
+//!
+//! \note The Callback function have two effective parameters,One is indicate
+//! is a PWM or Capture interrupt.And the other one show which channel have a 
+//! interrupt.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void 
+TIM1TRGCOMIntHandler(void)
+{
+    unsigned long ulPWMStastus;
+    unsigned long ulBase = xPWMJ_BASE;
+    
+    //
+    // Clear the PWMA INT Flag
+    //        
+    ulPWMStastus = xHWREG(ulBase + TIMER_SR) & 0x1E;
+    xHWREG(ulBase + TIMER_SR) &= ~ulPWMStastus;
+    
+    if (g_pfnPWMHandlerCallbacks[9] != 0)        
+    {
+        if(ulPWMStastus != 0)
+        {
+            g_pfnPWMHandlerCallbacks[9](0, PWM_EVENT_PWM, ulPWMStastus, 0);
+        }
+    }
+}
+
+//*****************************************************************************
+//
+//! \brief The PWMK default IRQ, declared in start up code. 
+//!
+//! \param None.
+//!
+//! This function is to give a default PWMK IRQ service.
+//!
+//! \note The Callback function have two effective parameters,One is indicate
+//! is a PWM or Capture interrupt.And the other one show which channel have a 
+//! interrupt.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void 
+TIM8UPIntHandler(void)
+{
+    unsigned long ulPWMStastus;
+    unsigned long ulBase = xPWMK_BASE;
+    
+    //
+    // Clear the PWMA INT Flag
+    //        
+    ulPWMStastus = xHWREG(ulBase + TIMER_SR) & 0x1E;
+    xHWREG(ulBase + TIMER_SR) &= ~ulPWMStastus;
+    
+    if (g_pfnPWMHandlerCallbacks[10] != 0)        
+    {
+        if(ulPWMStastus != 0)
+        {
+            g_pfnPWMHandlerCallbacks[10](0, PWM_EVENT_PWM, ulPWMStastus, 0);
+        }
+    }
+}
+
+//*****************************************************************************
+//
+//! \brief The PWML default IRQ, declared in start up code. 
+//!
+//! \param None.
+//!
+//! This function is to give a default PWML IRQ service.
+//!
+//! \note The Callback function have two effective parameters,One is indicate
+//! is a PWM or Capture interrupt.And the other one show which channel have a 
+//! interrupt.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void 
+TIM8TRGCOMIntHandler(void)
+{
+    unsigned long ulPWMStastus;
+    unsigned long ulBase = xPWML_BASE;
+    
+    //
+    // Clear the PWMA INT Flag
+    //        
+    ulPWMStastus = xHWREG(ulBase + TIMER_SR) & 0x1E;
+    xHWREG(ulBase + TIMER_SR) &= ~ulPWMStastus;
+    
+    if (g_pfnPWMHandlerCallbacks[11] != 0)        
+    {
+        if(ulPWMStastus != 0)
+        {
+            g_pfnPWMHandlerCallbacks[11](0, PWM_EVENT_PWM, ulPWMStastus, 0);
         }
     }
 }
